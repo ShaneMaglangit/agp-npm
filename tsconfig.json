@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "lib": ["es2017.string", "dom"],
     "module": "commonjs",
-    "declaration": true,
-    "outDir": "./lib",
-    "strict": true
+    "declaration": false,
+    "outDir": "./dist",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
-  "include": ["src"],
+  "include": ["./src/"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }
