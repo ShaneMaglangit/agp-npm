@@ -1,136 +1,14 @@
 import traitsJson from '../assets/traits.json';
 import partsJson from '../assets/parts.json';
-
-interface GeneBinGroup {
-  cls: string;
-  reserved: string;
-  region: string;
-  tag: string;
-  bodySkin: string;
-  xMas: string;
-  pattern: string;
-  color: string;
-  eyes: string;
-  ears: string;
-  horn: string;
-  mouth: string;
-  back: string;
-  tail: string;
-}
-
-export interface Gene {
-  cls: Cls
-  region: Region
-  tag: Tag
-  bodySkin: BodySkin
-  pattern: PatternGene
-  color: ColorGene
-  eyes: Part
-  mouth: Part
-  ears: Part
-  horn: Part
-  back: Part
-  tail: Part
-}
-
-interface PatternGene {
-  d: string
-  r1: string
-  r2: string
-}
-
-interface ColorGene {
-  d: string
-  r1: string
-  r2: string
-}
-
-interface Part {
-  d: PartGene
-  r1: PartGene
-  r2: PartGene
-  mystic: boolean
-}
-
-interface PartGene {
-  partId: string
-  cls: Cls
-  specialGenes: string
-  type: PartType
-  name: string
-}
-
-enum Cls {
-  Beast = 'beast',
-  Bug = 'bug',
-  Bird = 'bird',
-  Plant = 'plant',
-  Aquatic = 'aquatic',
-  Reptile = 'reptile',
-  Mech = 'mech',
-  Dusk = 'dusk',
-  Dawn = 'dawn',
-}
-
-enum PartType {
-  Eyes = 'eyes',
-  Ears = 'ears',
-  Mouth = 'mouth',
-  Horn = 'horn',
-  Back = 'back',
-  Tail = 'tail',
-}
-
-enum PartSkin {
-  Global = "global",
-  Mystic = "mystic",
-  Japan = "japan",
-  Xmas = "xmas",
-}
-
-enum Region {
-  Global = 'global',
-  Japan = 'japan',
-}
-
-enum Tag {
-  Default = '',
-  Origin = 'origin',
-  Meo1 = 'meo1',
-  Meo2 = 'meo2',
-}
-
-enum BodySkin {
-  Default = '',
-  Frosty = 'frosty'
-}
-
-const binClassMap = new Map([
-  ['0000', Cls.Beast],
-  ['0001', Cls.Bug],
-  ['0010', Cls.Bird],
-  ['0011', Cls.Plant],
-  ['0100', Cls.Aquatic],
-  ['0101', Cls.Reptile],
-  ['0111', Cls.Dawn],
-  ['1000', Cls.Mech],
-  ['1010', Cls.Dusk],
-]);
-
-const binRegionMap = new Map([['00000', Region.Global], ['00001', Region.Japan]]);
-const binTagMap = new Map([['00000', Tag.Default], ['00001', Tag.Origin], ['00010', Tag.Meo1], ['00011', Tag.Meo2]]);
-const binBodySkin = new Map([['0000', BodySkin.Default], ['0001', BodySkin.Frosty]]);
-const classColorMap = new Map([
-  [Cls.Beast, new Map([['0010', 'ffec51'], ['0011', 'ffa12a'], ['0100', 'f0c66e'], ['0110', '60afce']])],
-  [Cls.Bug, new Map([['0010', 'ff7183'], ['0011', 'ff6d61'], ['0100', 'f74e4e']])],
-  [Cls.Bird, new Map([['0010', 'ff9ab8'], ['0011', 'ffb4bb'], ['0100', 'ff778e']])],
-  [Cls.Plant, new Map([['0010', 'ccef5e'], ['0011', 'efd636'], ['0100', 'c5ffd9']])],
-  [Cls.Aquatic, new Map([['0010', '4cffdf'], ['0011', '2de8f2'], ['0100', '759edb'], ['0110', 'ff5a71']])],
-  [Cls.Reptile, new Map([['0010', 'fdbcff'], ['0011', 'ef93ff'], ['0100', 'f5e1ff'], ['0110', '43e27d']])],
-  [Cls.Mech, new Map([['0010', 'D9D9D9'], ['0011', 'D9D9D9'], ['0100', 'D9D9D9'], ['0110', 'D9D9D9']])],
-  [Cls.Dusk, new Map([['0010', 'D9D9D9'], ['0011', 'D9D9D9'], ['0100', 'D9D9D9'], ['0110', 'D9D9D9']])],
-  [Cls.Dawn, new Map([['0010', 'D9D9D9'], ['0011', 'D9D9D9'], ['0100', 'D9D9D9'], ['0110', 'D9D9D9']])],
-]);
+import { GeneBinGroup } from './models/internal/gene-bin-group';
+import { Part, PartGene, PartSkin, PartType } from './models/part';
+import { classColorMap, ColorGene } from './models/color';
+import { binBodySkin, BodySkin } from './models/bodySkin';
+import { binClassMap, Cls } from './models/cls';
+import { binTagMap, Tag } from './models/tag';
+import { Gene } from './models/gene';
+import { binRegionMap, Region } from './models/region';
+import { PatternGene } from './models/pattern';
 
 export class AxieGene {
   private geneBinGroup: GeneBinGroup;
@@ -344,7 +222,7 @@ export class AxieGene {
     if (part === undefined) {
       throw new Error('cannot recognize part binary');
     }
-    const ret = part[skin]
+    const ret = part[skin];
     if (ret === undefined) {
       throw new Error('cannot recognize part skin');
     }
@@ -369,8 +247,8 @@ export class AxieGene {
   private parsePartSkin(region: Region, skinBin: string): PartSkin {
     switch (skinBin) {
       case '00':
-        if (region === Region.Global) return PartSkin.Global
-        else return PartSkin.Japan
+        if (region === Region.Global) return PartSkin.Global;
+        else return PartSkin.Japan;
       case '10':
         return PartSkin.Xmas;
       case '11':
