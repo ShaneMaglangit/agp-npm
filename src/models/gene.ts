@@ -1,17 +1,17 @@
-import { Pattern } from './pattern';
-import { Cls } from './cls';
 import { ColorGene } from './color';
 import { Part } from './part';
-import { BodySkin } from './bodySkin';
 import { Region } from './region';
+import { BodySkin } from './bodySkin';
+import { Cls } from './cls';
 import { Tag } from './tag';
+import { PatternGene } from './pattern';
 
 export interface Gene {
   cls: Cls
   region: Region
   tag: Tag
   bodySkin: BodySkin
-  pattern: Pattern
+  pattern: PatternGene
   color: ColorGene
   eyes: Part
   mouth: Part

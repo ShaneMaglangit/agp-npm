@@ -159,11 +159,7 @@ export class AxieGene {
     const r1 = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(4, 8));
     const r2 = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(8, 12));
     if (d === undefined || r1 === undefined || r2 === undefined) throw new Error('cannot recognize color genes');
-    else return {
-      d: this.geneBinGroup.color.slice(0, 4),
-      r1: this.geneBinGroup.color.slice(4, 8),
-      r2: this.geneBinGroup.color.slice(8, 12),
-    };
+    else return { d, r1, r2 };
   }
 
   private parsePart(partType: PartType): Part {
