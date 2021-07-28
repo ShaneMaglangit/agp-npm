@@ -1,6 +1,6 @@
 {
   "name": "agp-ts",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "Shane Maglangit",
   "license": "GPL-3.0",
   "description": "Gene parsing package for Axie Infinity.",
@@ -13,7 +13,7 @@
     "lint": "tslint -p tsconfig.json",
     "test": "ts-mocha tests/**/*.test.ts"
   },
-  "keywords": [],
+  "keywords": ["axie", "axie-infinity", "gene"],
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "jest": "^27.0.6",
