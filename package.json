@@ -1,6 +1,6 @@
 {
   "name": "agp-npm",
-  "version": "0.0.1-pretest",
+  "version": "v1.0.0",
   "author": "Shane Maglangit",
   "license": "GPL-3.0",
   "description": "Gene parsing package for Axie Infinity.",
