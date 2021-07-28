@@ -3,9 +3,10 @@
 Package `agp-ts` is a gene parsing package for Axie Infinity.
 
 The name agp stands for "Axie Gene Parser" which decodes the hex representation of an Axie's gene into a human readable format.
+
 ## Documentation
 
-For more detailed documentation, see [AGP-TS Documentation](https://www.npmjs.com/package/agp-ts).
+For more detailed documentation, see [AGP-TS Documentation](https://shanemaglangit.github.io/agp-ts).
 
 ## Install
 
@@ -30,16 +31,16 @@ This object automatically handles the parsing of the hex value for you. You may 
 
 Here are the properties that you can get from the AxieGene object.
 
-* genes
-* cls
-* region
-* tag
-* bodySkin
-* pattern
-* color
-* eyes
-* mouth
-* ears
-* horn
-* back
-* tail
+* [genes](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#genes)
+* [cls](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#cls)
+* [region](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#region)
+* [tag](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#tag)
+* [bodySkin](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#bodySkin)
+* [pattern](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#pattern)
+* [color](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#color)
+* [eyes](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#eyes)
+* [mouth](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#mouth)
+* [ears](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#ears)
+* [horn](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#horn)
+* [back](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#back)
+* [tail](https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#tail)

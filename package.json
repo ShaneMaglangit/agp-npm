@@ -13,7 +13,11 @@
     "lint": "tslint -p tsconfig.json",
     "test": "ts-mocha tests/**/*.test.ts"
   },
-  "keywords": ["axie", "axie-infinity", "gene"],
+  "keywords": [
+    "axie",
+    "axie-infinity",
+    "gene"
+  ],
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "jest": "^27.0.6",
@@ -39,5 +43,7 @@
     "url": "https://github.com/ShaneMaglangit/agp-ts/issues"
   },
   "homepage": "https://github.com/ShaneMaglangit/agp-ts#readme",
-  "dependencies": {}
+  "dependencies": {
+    "typedoc": "^0.21.4"
+  }
 }

@@ -61,6 +61,43 @@
 				<a href="#agp-ts" id="agp-ts" style="color: inherit; text-decoration: none;">
 					<h1>agp-ts</h1>
 				</a>
+				<p>Package <code>agp-ts</code> is a gene parsing package for Axie Infinity.</p>
+				<p>The name agp stands for &quot;Axie Gene Parser&quot; which decodes the hex representation of an Axie&#39;s gene into a human readable format.</p>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p>For more detailed documentation, see <a href="https://shanemaglangit.github.io/agp-ts">AGP-TS Documentation</a>.</p>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<p>agp-ts runs on Node.js and is available as a NPM package.</p>
+				<pre><code class="language-sh"><span style="color: #000000">npm install typedoc</span>
+</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p>To get started, you&#39;ll first need to get the gene of an Axie in hex. You may use the <a href="https://axie-graphql.web.app/">Axie Infinity GraphQL endpoint</a> to get this detail. For this example, let&#39;s use the hex <code>0x11c642400a028ca14a428c20cc011080c61180a0820180604233082</code></p>
+				<p>Let us create an AxieGene object from the hex string that we have.</p>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">hex</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;0x11c642400a028ca14a428c20cc011080c61180a0820180604233082&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #001080">hex</span><span style="color: #000000">);</span>
+</code></pre>
+				<p>This object automatically handles the parsing of the hex value for you. You may simply use the accessors of the class to get the gene information that you want.</p>
+				<p>Here are the properties that you can get from the AxieGene object.</p>
+				<ul>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#genes">genes</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#cls">cls</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#region">region</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#tag">tag</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#bodySkin">bodySkin</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#pattern">pattern</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#color">color</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#eyes">eyes</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#mouth">mouth</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#ears">ears</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#horn">horn</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#back">back</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#tail">tail</a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
