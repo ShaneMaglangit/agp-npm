@@ -67,8 +67,8 @@ I also released a similar package for Go. [Do check it out!](https://github.com/
 
 Love this module? Feel free to buy me a coffee and motivate me to work on more stuffs like this!
 
-Ronin Address: ronin:789c9b253eba265f0079e3ebcaaea2503eb31bb3
-ETH Address: 0x9F50E3606caf22ff5E0E03F0eb02DE3Fa2786535
-Paypal: paypal.me/shanemaglangit
+**Ronin Address:** ronin:789c9b253eba265f0079e3ebcaaea2503eb31bb3  
+**ETH Address:** 0x9F50E3606caf22ff5E0E03F0eb02DE3Fa2786535  
+**Paypal:** paypal.me/shanemaglangit  
 
 Support does not need to have monetary values. I would also appreciate if you leave a star!
