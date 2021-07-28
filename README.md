@@ -1,5 +1,7 @@
 # agp-npm
 
+[![npm version](https://badge.fury.io/js/agp-npm.svg)](https://badge.fury.io/js/agp-npm)
+
 Package `agp-npm` is a gene parsing package for Axie Infinity.
 
 The name agp stands for "Axie Gene Parser" which decodes the hex representation of an Axie's gene into a human readable
@@ -56,3 +58,15 @@ Here are the properties that you can get from the AxieGene object.
 * [horn](https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#horn)
 * [back](https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#back)
 * [tail](https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#tail)
+
+## Go Lang Support
+
+I also released a similar package for Go. [Do check it out!](https://github.com/ShaneMaglangit/agp)
+
+## Support the Author
+
+Love this module? Feel free to buy me a coffee and motivate me to work on more stuffs like this!
+
+Ronin Address: ronin:789c9b253eba265f0079e3ebcaaea2503eb31bb3
+ETH Address: 0x9F50E3606caf22ff5E0E03F0eb02DE3Fa2786535
+Paypal: paypal.me/shanemaglangit
