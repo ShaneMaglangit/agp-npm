@@ -1,4 +1,4 @@
-import { AxieGene } from '../src/axie-gene';
+import AxieGene from '../src/axie-gene';
 import { Cls } from '../src/models/cls';
 import { BodySkin } from '../src/models/bodySkin';
 import { Region } from '../src/models/region';
