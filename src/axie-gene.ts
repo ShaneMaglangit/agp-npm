@@ -14,7 +14,7 @@ import { PatternGene } from './models/pattern';
  * Contains the gene information of an Axie. The information are generated based on the hex string provided
  * on the object's constructor call.
  */
-export class AxieGene {
+export default class AxieGene {
   /** Stores the grouped binary values of the provided hex gene. */
   private geneBinGroup: GeneBinGroup;
   /** Stores the gene details after the binary values are parsed. */

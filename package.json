@@ -28,7 +28,8 @@
     "prettier": "^2.3.2",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "typedoc": "^0.21.4"
   },
   "files": [
     "dist",
@@ -44,6 +45,6 @@
   },
   "homepage": "https://github.com/ShaneMaglangit/agp-ts#readme",
   "dependencies": {
-    "typedoc": "^0.21.4"
+    "require-dir": "^1.2.0"
   }
 }
