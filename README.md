@@ -13,7 +13,7 @@ For more detailed documentation, see [AGP-TS Documentation](https://shanemaglang
 agp-ts runs on Node.js and is available as a NPM package.
 
 ```sh
-npm install typedoc
+npm install agp-ts
 ```
 
 ## Usage
