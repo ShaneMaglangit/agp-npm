@@ -4,4 +4,7 @@ export enum Region {
   Japan = 'japan',
 }
 
-export const binRegionMap = new Map([['00000', Region.Global], ['00001', Region.Japan]]);
+export const binRegionMap = new Map([
+  ['00000', Region.Global],
+  ['00001', Region.Japan],
+]);

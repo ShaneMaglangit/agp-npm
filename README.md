@@ -7,7 +7,7 @@ format.
 
 ## Documentation
 
-For more detailed documentation, see [agp-npm Documentation](https://shanemaglangit.github.io/agp-npm).
+For more detailed documentation, see [agp-npm documentation](https://shanemaglangit.github.io/agp-npm).
 
 ## Install
 

@@ -269,8 +269,11 @@ export class AxieGene {
     const cls = this.parseClass();
     const d = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(0, 4));
     const r1 = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(4, 8));
-    const r2 = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(8, 12));
-    if (d === undefined || r1 === undefined || r2 === undefined) throw new Error('cannot recognize color genes');
+    const r2 = classColorMap
+      .get(cls)
+      ?.get(this.geneBinGroup.color.slice(8, 12));
+    if (d === undefined || r1 === undefined || r2 === undefined)
+      throw new Error('cannot recognize color genes');
     else return { d, r1, r2 };
   }
 
@@ -351,7 +354,13 @@ export class AxieGene {
    * @param skinBin binary representation of the body part's skin.
    * @returns Cls class of the Axie.
    */
-  private parsePartName(cls: Cls, partType: PartType, region: Region, partBin: string, skinBin: string = '00'): string {
+  private parsePartName(
+    cls: Cls,
+    partType: PartType,
+    region: Region,
+    partBin: string,
+    skinBin: string = '00'
+  ): string {
     const skin = this.parsePartSkin(region, skinBin);
     // @ts-ignore
     const part = traitsJson[cls][partType][partBin];
@@ -374,18 +383,21 @@ export class AxieGene {
    * @returns PartGene an objects that contains the part class, id, name, type, and if it is a special gene.
    */
   private parsePartGene(partType: PartType, partName: string): PartGene {
-    const partId = `${partType}-${partName.toLowerCase()}`.replace(' ', '-').replace('\'', '');
+    const partId = `${partType}-${partName.toLowerCase()}`
+      .replace(' ', '-')
+      .replace("'", '');
     // @ts-ignore
     const partJson = partsJson[partId];
     if (partJson === undefined) {
       throw new Error('cannot recognize part gene');
-    } else return {
-      cls: partJson.class,
-      name: partJson.name,
-      partId,
-      specialGenes: partJson.specialGenes,
-      type: partJson.type,
-    };
+    } else
+      return {
+        cls: partJson.class,
+        name: partJson.name,
+        partId,
+        specialGenes: partJson.specialGenes,
+        type: partJson.type,
+      };
   }
 
   /**
