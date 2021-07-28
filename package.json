@@ -1,9 +1,11 @@
 {
   "name": "agp-ts",
-  "version": "1.0.11",
+  "version": "0.0.1-test",
   "author": "Shane Maglangit",
   "license": "GPL-3.0",
   "description": "Gene parsing package for Axie Infinity.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "coverage": "nyc npm test",
@@ -11,18 +13,19 @@
     "develop": "tsc && node dist/src/axie-gene.js",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "test": "ts-mocha tests/**/*.test.ts",
-    "deploy": "tsc && typedoc src --out docs && npm publish --access private"
+    "test": "jest --config jest.config.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "axie",
     "axie-infinity",
     "gene"
   ],
-  "dependencies": {
-    "@types/require-dir": "^1.0.2",
-    "require-dir": "^1.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "jest": "^27.0.6",

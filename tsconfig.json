@@ -6,7 +6,7 @@
       "dom"
     ],
     "module": "commonjs",
-    "declaration": false,
+    "declaration": true,
     "outDir": "./dist",
     "strict": true,
     "resolveJsonModule": true,
@@ -15,6 +15,8 @@
   "include": [ "./src/**/*", "./index.ts" ],
   "exclude": [
     "node_modules",
-    "**/__tests__/*"
+    "**/__tests__/*",
+    "tests",
+    "docs"
   ]
 }
