@@ -71,4 +71,4 @@ Love this module? Feel free to buy me a coffee and motivate me to work on more s
 **ETH Address:** 0x9F50E3606caf22ff5E0E03F0eb02DE3Fa2786535  
 **Paypal:** paypal.me/shanemaglangit  
 
-Support does not need to have monetary values. I would also appreciate if you leave a star!
+Support does not need to have any monetary value. I would also appreciate if you leave a star!
