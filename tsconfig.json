@@ -6,17 +6,24 @@
       "dom"
     ],
     "module": "commonjs",
-    "declaration": true,
+    "rootDir": "src",
+    "moduleResolution": "node",
     "outDir": "./dist",
+    "incremental": true,
+    "declaration": true,
     "strict": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["node", "jest"],
+    "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": [ "./src/**/*", "./index.ts" ],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "**/__tests__/*",
-    "tests",
+    "test",
     "docs"
   ]
 }

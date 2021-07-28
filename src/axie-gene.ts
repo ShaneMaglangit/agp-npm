@@ -1,5 +1,3 @@
-import traitsJson from '../assets/traits.json';
-import partsJson from '../assets/parts.json';
 import { GeneBinGroup } from './models/internal/gene-bin-group';
 import { Part, PartGene, PartSkin, PartType } from './models/part';
 import { classColorMap, ColorGene } from './models/color';
@@ -9,6 +7,9 @@ import { binTagMap, Tag } from './models/tag';
 import { Gene } from './models/gene';
 import { binRegionMap, Region } from './models/region';
 import { PatternGene } from './models/pattern';
+
+import traitsJson = require('./assets/traits.json');
+import partsJson = require('./assets/parts.json');
 
 /**
  * Contains the gene information of an Axie. The information are generated based on the hex string provided

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/agp-ts.iml" filepath="$PROJECT_DIR$/.idea/agp-ts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/agp-npm.iml" filepath="$PROJECT_DIR$/.idea/agp-npm.iml" />
     </modules>
   </component>
 </project>
