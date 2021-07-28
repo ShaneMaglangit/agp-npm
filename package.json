@@ -5,12 +5,13 @@
   "license": "GPL-3.0",
   "description": "Gene parsing package for Axie Infinity.",
   "scripts": {
-    "test": "ts-mocha tests/**/*.test.ts",
     "build": "tsc",
     "coverage": "nyc npm test",
+    "docs": "typedoc src --out docs",
     "develop": "tsc && node dist/src/axie-gene.js",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "test": "ts-mocha tests/**/*.test.ts"
   },
   "keywords": [],
   "devDependencies": {

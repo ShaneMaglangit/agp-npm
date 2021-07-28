@@ -1,5 +1,6 @@
 import { Cls } from './cls';
 
+/** Stores the dominant and recessive genes of an Axie's part. */
 export interface Part {
   d: PartGene
   r1: PartGene
@@ -7,6 +8,7 @@ export interface Part {
   mystic: boolean
 }
 
+/** Holds the data for a single gene of an Axie's part. */
 export interface PartGene {
   partId: string
   cls: Cls
@@ -15,6 +17,7 @@ export interface PartGene {
   name: string
 }
 
+/** Represents each of an Axies body parts including: Eeyes, Ears, Mouth, Horn, Back, Tail. */
 export enum PartType {
   Eyes = 'eyes',
   Ears = 'ears',
@@ -24,6 +27,7 @@ export enum PartType {
   Tail = 'tail',
 }
 
+/** Represents the part skin of a given Axie. */
 export enum PartSkin {
   Global = 'global',
   Mystic = 'mystic',

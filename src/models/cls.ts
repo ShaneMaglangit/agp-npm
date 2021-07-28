@@ -1,3 +1,7 @@
+/**
+ * Represents the class of a given Axie. A class is among these values:
+ * Beast, Bug, Bird, Plant, Aquatic, Reptile, Mech, Dusk, Dawn.
+ */
 export enum Cls {
   Beast = 'beast',
   Bug = 'bug',

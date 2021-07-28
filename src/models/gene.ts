@@ -6,6 +6,7 @@ import { Cls } from './cls';
 import { Tag } from './tag';
 import { PatternGene } from './pattern';
 
+/** Contains the overall data about the Axie's gene. */
 export interface Gene {
   cls: Cls
   region: Region

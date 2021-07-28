@@ -1,5 +1,6 @@
 import { Cls } from './cls';
 
+/** Stores the dominant and recessive genes of an Axie's color. */
 export interface ColorGene {
   d: string
   r1: string

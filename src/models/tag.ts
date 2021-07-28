@@ -1,3 +1,4 @@
+/** Represents the tag attached to a given Axie. Special Axies may have the title Origin, Meo1, or Meo2 tag. */
 export enum Tag {
   Default = '',
   Origin = 'origin',
