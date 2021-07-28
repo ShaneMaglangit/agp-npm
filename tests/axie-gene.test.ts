@@ -1,9 +1,9 @@
-import { AxieGene } from './axie-gene';
-import { Cls } from './models/cls';
-import { BodySkin } from './models/bodySkin';
-import { Region } from './models/region';
-import { Tag } from './models/tag';
-import { PartType } from './models/part';
+import { AxieGene } from '../src/axie-gene';
+import { Cls } from '../src/models/cls';
+import { BodySkin } from '../src/models/bodySkin';
+import { Region } from '../src/models/region';
+import { Tag } from '../src/models/tag';
+import { PartType } from '../src/models/part';
 
 describe('AxieGene', () => {
   const axieGene = new AxieGene('0x11c642400a028ca14a428c20cc011080c61180a0820180604233082');

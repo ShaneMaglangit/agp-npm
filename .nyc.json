@@ -1,0 +1,18 @@
+{
+  "cache": false,
+  "check-coverage": true,
+  "extension": [
+    ".ts"
+  ],
+  "include": [
+    "**/src/*.ts"
+  ],
+  "reporter": [
+    "cobertura",
+    "text-summary"
+  ],
+  "statements": 100,
+  "branches": 100,
+  "functions": 100,
+  "lines": 100
+}
