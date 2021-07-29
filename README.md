@@ -32,7 +32,7 @@ Let us create an AxieGene object from the hex string that we have.
 **JavaScript**
 
 ```javascript
-const { AxieGene } = require("agp-npm-test/dist/src/axie-gene");
+const { AxieGene } = require("agp-npm/dist/src/axie-gene");
 const axieGene = new AxieGene("0x11c642400a028ca14a428c20cc011080c61180a0820180604233082");
 ```
 
