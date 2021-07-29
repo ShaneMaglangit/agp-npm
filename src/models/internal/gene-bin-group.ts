@@ -1,7 +1,6 @@
 /** Collectively stores the binary representation of an Axie gene into their respective groups. */
 export interface GeneBinGroup {
   cls: string;
-  reserved: string;
   region: string;
   tag: string;
   bodySkin: string;

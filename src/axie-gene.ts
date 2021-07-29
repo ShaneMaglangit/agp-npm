@@ -10,31 +10,56 @@ import { PatternGene } from './models/pattern';
 
 import traitsJson = require('./assets/traits.json');
 import partsJson = require('./assets/parts.json');
+import { throws } from 'assert/strict';
+
+export enum HexType {
+  Bit256 = 256,
+  Bit512 = 512,
+}
 
 /**
- * Contains the gene information of an Axie. The information are generated based on the hex string provided
- * on the object's constructor call.
+ * Stores the gene information of an Axie. These informations are parsed from the provided hex representation of
+ * the Axie's gene on its constructor call. Supports both 256 and 512 bit hex genes.
+ *
+ * **Usage**
+ *
+ * Javascript
+ *
+ * ```javascript
+ * const { AxieGene } = require("agp-npm-test/dist/src/axie-gene");
+ * const axieGene = new AxieGene("0x11c642400a028ca14a428c20cc011080c61180a0820180604233082");
+ * ```
+ *
+ * Typescript
+ *
+ * ```typescript
+ * const axieGene = new AxieGene("0x11c642400a028ca14a428c20cc011080c61180a0820180604233082");
+ * ```
  */
 export class AxieGene {
-  /** Stores the grouped binary values of the provided hex gene. */
+  /** Stores the grouped binary values from the hex value. */
   private geneBinGroup: GeneBinGroup;
-  /** Stores the gene details after the binary values are parsed. */
+  /** Stores the gene details from the parsed binary values. */
   private readonly _genes: Gene;
+  /** Stores the gene hex type wether its in 256 or 512 bit. */
+  private readonly _hexType: HexType;
 
   /**
-   * Used to initialize an AxieGene object from an hex representation.
-   * @param hex hex representation of an Axie's gene.
+   * Used to initialize an AxieGene object from a hex representation of the Axie's gene.
+   * @param hex hex representation of the Axie's gene.
+   * @param hexType represents if the provided hex gene is in 256 or 512 bit.
    */
-  constructor(hex: string) {
+  constructor(hex: string, hexType: HexType = HexType.Bit256) {
+    this._hexType = hexType;
     // Convert the hex string into binary and divided them to their respective groups.
-    this.geneBinGroup = AxieGene.parseHex(hex);
+    this.geneBinGroup = this.parseHex(hex);
     // Parse the binary values into their gene details.
     this._genes = this.parseGenes();
   }
 
   /**
-   * Getter for all of the Gene details of the Axie.
-   * @returns Gene Gene object that contains the set of gene information.
+   * Getter for all of the details of the Axie's gene.
+   * @returns Objects that contains all of the details about of the Axie's gene.
    */
   get genes(): Gene {
     return this._genes;
@@ -42,7 +67,7 @@ export class AxieGene {
 
   /**
    * Getter for the class of the Axie.
-   * @returns Cls class of the Axie.
+   * @returns Class of the Axie.
    */
   get cls(): Cls {
     return this._genes.cls;
@@ -50,15 +75,15 @@ export class AxieGene {
 
   /**
    * Getter for the region of the Axie.
-   * @returns Region region of the Axie.
+   * @returns Region of the Axie.
    */
   get region(): Region {
     return this._genes.region;
   }
 
   /**
-   * Getter for the tag of the Axie.
-   * @returns Tag tag of the Axie.
+   * Getter for the tag associated with the Axie.
+   * @returns Tag associated with the Axie.
    */
   get tag(): Tag {
     return this._genes.tag;
@@ -66,7 +91,7 @@ export class AxieGene {
 
   /**
    * Getter for the body skin of the Axie.
-   * @returns BodySkin body skin of the Axie.
+   * @returns Skin of the Axie's body.
    */
   get bodySkin(): BodySkin {
     return this._genes.bodySkin;
@@ -74,7 +99,7 @@ export class AxieGene {
 
   /**
    * Getter for the pattern genes of the Axie.
-   * @returns PatternGene set of pattern genes of the Axie.
+   * @returns Genes for the Axie's pattern.
    */
   get pattern(): PatternGene {
     return this._genes.pattern;
@@ -82,7 +107,7 @@ export class AxieGene {
 
   /**
    * Getter for the color genes of the Axie.
-   * @returns ColorGene set of color genes of the Axie.
+   * @returns Genes for the Axie's color.
    */
   get color(): ColorGene {
     return this._genes.color;
@@ -90,7 +115,7 @@ export class AxieGene {
 
   /**
    * Getter for the eye genes of the Axie.
-   * @returns Part set of eye genes of the Axie.
+   * @returns Genes for the Axie's eye.
    */
   get eyes(): Part {
     return this._genes.eyes;
@@ -98,7 +123,7 @@ export class AxieGene {
 
   /**
    * Getter for the ears genes of the Axie.
-   * @returns Part set of ears genes of the Axie.
+   * @returns Genes for the Axie's ears.
    */
   get ears(): Part {
     return this._genes.ears;
@@ -106,7 +131,7 @@ export class AxieGene {
 
   /**
    * Getter for the horn genes of the Axie.
-   * @returns Part set of horn genes of the Axie.
+   * @returns Genes for the Axie's horns.
    */
   get horn(): Part {
     return this._genes.horn;
@@ -114,7 +139,7 @@ export class AxieGene {
 
   /**
    * Getter for the mouth genes of the Axie.
-   * @returns Part set of mouth genes of the Axie.
+   * @returns Genes for the Axie's mouth.
    */
   get mouth(): Part {
     return this._genes.mouth;
@@ -122,7 +147,7 @@ export class AxieGene {
 
   /**
    * Getter for the back genes of the Axie.
-   * @returns Part set of back genes of the Axie.
+   * @returns Genes for the Axie's back.
    */
   get back(): Part {
     return this._genes.back;
@@ -130,21 +155,21 @@ export class AxieGene {
 
   /**
    * Getter for the tail genes of the Axie.
-   * @returns Part set of tail genes of the Axie.
+   * @returns Genes for the Axie's tail. 
    */
   get tail(): Part {
     return this._genes.tail;
   }
 
   /**
-   * Converts the hex representation of an Axie's gene into binary and divides them into
-   * their respective groups
+   * Converts the hex into its binary representation and divides them based on their respective respective groups.
+   * Each group represents a part of an Axie.
    * @private
-   * @static
    * @param hex hex representation of an Axie's gene.
-   * @returns GeneBinGroup a collective object that contains the grouped binary representation of the Axie's gene.
+   * @returns An object that contains the binary value from the hex. The binary values are divided into their respective
+   * group based on the gene detail that they represent.
    */
-  private static parseHex(hex: string): GeneBinGroup {
+  private parseHex(hex: string): GeneBinGroup {
     let hexBin = '';
     // Remove the hex prefix.
     hex = hex.replace('0x', '');
@@ -152,24 +177,23 @@ export class AxieGene {
     Array.from(hex).forEach((c) => {
       hexBin += parseInt(c, 16).toString(2).padStart(4, '0');
     });
-    // Fill the binary values with 0 to form a 256 bit binary values.
-    hexBin = hexBin.padStart(256, '0');
+    // Fill the binary values with leadings 0s.
+    hexBin = hexBin.padStart(this._hexType.valueOf(), '0');
     // Divide the binary values into their respective groups.
     return {
-      cls: hexBin.slice(0, 4),
-      reserved: hexBin.slice(4, 8),
-      region: hexBin.slice(8, 13),
-      tag: hexBin.slice(13, 18),
-      bodySkin: hexBin.slice(18, 22),
-      xMas: hexBin.slice(22, 34),
-      pattern: hexBin.slice(34, 52),
-      color: hexBin.slice(52, 64),
-      eyes: hexBin.slice(64, 96),
-      mouth: hexBin.slice(96, 128),
-      ears: hexBin.slice(128, 160),
-      horn: hexBin.slice(160, 192),
-      back: hexBin.slice(192, 224),
-      tail: hexBin.slice(224, 256),
+      cls: this._hexType === HexType.Bit256 ? hexBin.slice(0, 4) : hexBin.slice(0, 5),
+      region: this._hexType === HexType.Bit256 ? hexBin.slice(8, 13) : hexBin.slice(22, 40),
+      tag: this._hexType === HexType.Bit256 ? hexBin.slice(13, 18) : hexBin.slice(40, 55),
+      bodySkin: this._hexType === HexType.Bit256 ? hexBin.slice(18, 22) : hexBin.slice(61, 65),
+      xMas: this._hexType === HexType.Bit256 ? hexBin.slice(22, 34) : "",
+      pattern: this._hexType === HexType.Bit256 ? hexBin.slice(34, 52) : hexBin.slice(65, 92),
+      color: this._hexType === HexType.Bit256 ? hexBin.slice(52, 64) : hexBin.slice(92, 110),
+      eyes: this._hexType === HexType.Bit256 ? hexBin.slice(64, 96) : hexBin.slice(143, 192),
+      mouth: this._hexType === HexType.Bit256 ? hexBin.slice(96, 128) : hexBin.slice(207, 256),
+      ears: this._hexType === HexType.Bit256 ? hexBin.slice(128, 160) : hexBin.slice(271, 320),
+      horn: this._hexType === HexType.Bit256 ? hexBin.slice(160, 192) : hexBin.slice(335, 384),
+      back: this._hexType === HexType.Bit256 ? hexBin.slice(192, 224) : hexBin.slice(399, 448),
+      tail: this._hexType === HexType.Bit256 ? hexBin.slice(224, 256) : hexBin.slice(463, 512),
     };
   }
 
