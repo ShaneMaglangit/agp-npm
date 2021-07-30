@@ -574,7 +574,7 @@ export class AxieGene {
   private getPartQuality(part: Part): number {
     const cls = this._genes.cls;
     let partQuality = 0;
-    partQuality += part.d.cls === cls ? 76/6 : 0;
+    partQuality += part.d.cls === cls ? 76 / 6 : 0;
     partQuality += part.r1.cls === cls ? 3 : 0;
     partQuality += part.r2.cls === cls ? 1 : 0;
     return partQuality;
