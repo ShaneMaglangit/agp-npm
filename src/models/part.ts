@@ -32,5 +32,22 @@ export enum PartSkin {
   Global = 'global',
   Mystic = 'mystic',
   Japan = 'japan',
-  Xmas = 'xmas',
+  Xmas1 = 'xmas1',
+  Xmas2 = 'xmas2'
 }
+
+
+export const binPartSkinMap = new Map([
+  // 256 Classes
+  ['00000', PartSkin.Global],
+  ['00001', PartSkin.Japan],
+  ['010101010101', PartSkin.Xmas1],
+  ['10', PartSkin.Xmas2],
+  ['11', PartSkin.Mystic],
+  // 512 PartSkins
+  ['0000', PartSkin.Global],
+  ['0001', PartSkin.Mystic],
+  ['0011', PartSkin.Japan],
+  ['0100', PartSkin.Xmas1],
+  ['0101', PartSkin.Xmas2],
+]);

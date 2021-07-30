@@ -17,7 +17,7 @@ describe('AxieGene', () => {
     expect(axieGene.tag).toBe(Tag.Default);
   });
   it('parse body skin', () => {
-    expect(axieGene.bodySkin).toBe(BodySkin.Default);
+    expect(axieGene.bodySkin).toBe(BodySkin.Normal);
   });
   it('parse pattern', () => {
     expect(axieGene.pattern).toStrictEqual({ d: '000001', r1: '000111', r2: '000110' });
