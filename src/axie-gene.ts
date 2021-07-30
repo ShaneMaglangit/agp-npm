@@ -272,15 +272,17 @@ export class AxieGene {
    * @returns Region region of the Axie.
    */
   private parseRegion(): Region {
+    if(this.geneBinGroup.region === "000000000000000000") return Region.Global;
     const ret = binRegionMap.get(this.geneBinGroup.region);
     if (ret === undefined) {
-      if(this._hexType === HexType.Bit512) {
-        if(this.geneBinGroup.eyes.slice(0, 4) === "0011") return Region.Japan;
-        if(this.geneBinGroup.mouth.slice(0, 4) === "0011") return Region.Japan;
-        if(this.geneBinGroup.ears.slice(0, 4) === "0011") return Region.Japan;
-        if(this.geneBinGroup.horn.slice(0, 4) === "0011") return Region.Japan;
-        if(this.geneBinGroup.back.slice(0, 4) === "0011") return Region.Japan;
-        if(this.geneBinGroup.tail.slice(0, 4) === "0011") return Region.Japan;
+      // Check if the axie has any japanese parts for 512 bit genes.
+      if (this._hexType === HexType.Bit512) {
+        if (this.geneBinGroup.eyes.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.mouth.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.ears.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.horn.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.back.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.tail.slice(0, 4) === '0011') return Region.Japan;
       }
       throw new Error('cannot recognize region');
     }
@@ -372,29 +374,32 @@ export class AxieGene {
 
     // Get the region and skin values needed to parse the correct part gene
     const regionBin = this.geneBinGroup.region;
+
     const dSkinBin = this._hexType === HexType.Bit256 ? partBin.slice(0, 2) : partBin.slice(0, 4);
-    const rSkinBin = this._hexType === HexType.Bit256 ? "00" : dSkinBin
+    const rSkinBin = this._hexType === HexType.Bit256 ? '00' : dSkinBin;
+
+    const dSkin = this.parsePartSkin(regionBin, dSkinBin);
+    const rSkin = this.parsePartSkin(regionBin, rSkinBin);
 
     // Get the dominant gene
     const dClass = this.parsePartClass(this._hexType === HexType.Bit256 ? partBin.slice(2, 6) : partBin.slice(5, 9));
     const dBin = this._hexType === HexType.Bit256 ? partBin.slice(6, 12) : partBin.slice(11, 17);
-    const dName = this.parsePartName(dClass, partType, regionBin, dBin, dSkinBin);
+    const dName = this.parsePartName(dClass, partType, regionBin, dBin, dSkin);
     const d = this.parsePartGene(partType, dName);
 
     // Get the recessive 1 gene
     const r1Class = this.parsePartClass(this._hexType === HexType.Bit256 ? partBin.slice(12, 16) : partBin.slice(18, 22));
     const r1Bin = this._hexType === HexType.Bit256 ? partBin.slice(16, 22) : partBin.slice(24, 30);
-    const r1Name = this.parsePartName(r1Class, partType, regionBin, r1Bin, rSkinBin);
+    const r1Name = this.parsePartName(r1Class, partType, regionBin, r1Bin, rSkin);
     const r1 = this.parsePartGene(partType, r1Name);
 
     // Get the recessive 2 gene
     const r2Class = this.parsePartClass(this._hexType === HexType.Bit256 ? partBin.slice(22, 26) : partBin.slice(31, 35));
     const r2Bin = this._hexType === HexType.Bit256 ? partBin.slice(26, 32) : partBin.slice(37, 48);
-    const r2Name = this.parsePartName(r2Class, partType, regionBin, r2Bin, rSkinBin);
+    const r2Name = this.parsePartName(r2Class, partType, regionBin, r2Bin, rSkin);
     const r2 = this.parsePartGene(partType, r2Name);
 
-    // TODO: Check mystic
-    return { d, r1, r2, mystic: false };
+    return { d, r1, r2, mystic: dSkin === PartSkin.Mystic };
   }
 
   /**
@@ -418,7 +423,7 @@ export class AxieGene {
    * @param partType part type that will be parsed.
    * @param regionBin region binary of the Axie.
    * @param partBin part binary of the Axie.
-   * @param skinBin binary representation of the body part's skin.
+   * @param skin skin type of the Axie's part.
    * @returns Cls class of the Axie.
    */
   private parsePartName(
@@ -426,9 +431,8 @@ export class AxieGene {
     partType: PartType,
     regionBin: string,
     partBin: string,
-    skinBin: string = this._hexType === HexType.Bit256 ? "00" : "0000",
+    skin: PartSkin,
   ): string {
-    const skin = this.parsePartSkin(regionBin, skinBin);
     // @ts-ignore
     const part = traitsJson[cls][partType][partBin];
     if (part === undefined) {
@@ -436,9 +440,9 @@ export class AxieGene {
     }
     let ret = part[skin];
     if (ret === undefined) {
-      const fallBack = part[PartSkin.Global]
+      const fallBack = part[PartSkin.Global];
       if (fallBack === undefined) throw new Error('cannot recognize part skin');
-      ret = fallBack
+      ret = fallBack;
     }
     return ret;
   }
@@ -453,7 +457,7 @@ export class AxieGene {
    */
   private parsePartGene(partType: PartType, partName: string): PartGene {
     const partId = `${partType}-${partName.toLowerCase()}`
-      .replace(' ', '-')
+      .split(' ').join('-')
       .replace('\'', '');
     // @ts-ignore
     const partJson = partsJson[partId];
