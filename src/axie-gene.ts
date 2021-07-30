@@ -455,7 +455,7 @@ export class AxieGene {
 
     const mystic = dSkin === PartSkin.Mystic || dSkinBin === '0001';
 
-    return { d, r1, r2, mystic: mystic };
+    return { d, r1, r2, mystic };
   }
 
   /**
