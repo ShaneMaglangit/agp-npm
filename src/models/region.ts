@@ -5,6 +5,7 @@ export enum Region {
 }
 
 export const binRegionMap = new Map([
+  // 256 Regions
   ['00000', Region.Global],
   ['00001', Region.Japan],
 ]);

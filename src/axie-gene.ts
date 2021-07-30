@@ -1,5 +1,11 @@
 import { GeneBinGroup } from './models/internal/gene-bin-group';
-import { Part, PartGene, PartSkin, PartType } from './models/part';
+import {
+  binPartSkinMap,
+  Part,
+  PartGene,
+  PartSkin,
+  PartType,
+} from './models/part';
 import { classColorMap, ColorGene } from './models/color';
 import { binBodySkin, BodySkin } from './models/bodySkin';
 import { binClassMap, Cls } from './models/cls';
@@ -7,34 +13,57 @@ import { binTagMap, Tag } from './models/tag';
 import { Gene } from './models/gene';
 import { binRegionMap, Region } from './models/region';
 import { PatternGene } from './models/pattern';
-
 import traitsJson = require('./assets/traits.json');
 import partsJson = require('./assets/parts.json');
 
+export enum HexType {
+  Bit256 = 256,
+  Bit512 = 512,
+}
+
 /**
- * Contains the gene information of an Axie. The information are generated based on the hex string provided
- * on the object's constructor call.
+ * Stores the gene information of an Axie. These informations are parsed from the provided hex representation of
+ * the Axie's gene on its constructor call. Supports both 256 and 512 bit hex genes.
+ *
+ * **Usage**
+ *
+ * Javascript
+ *
+ * ```javascript
+ * const { AxieGene } = require("agp-npm-test/dist/src/axie-gene");
+ * const axieGene = new AxieGene("0x11c642400a028ca14a428c20cc011080c61180a0820180604233082");
+ * ```
+ *
+ * Typescript
+ *
+ * ```typescript
+ * const axieGene = new AxieGene("0x11c642400a028ca14a428c20cc011080c61180a0820180604233082");
+ * ```
  */
 export class AxieGene {
-  /** Stores the grouped binary values of the provided hex gene. */
+  /** Stores the grouped binary values from the hex value. */
   private geneBinGroup: GeneBinGroup;
-  /** Stores the gene details after the binary values are parsed. */
+  /** Stores the gene details from the parsed binary values. */
   private readonly _genes: Gene;
+  /** Stores the gene hex type wether its in 256 or 512 bit. */
+  private readonly _hexType: HexType;
 
   /**
-   * Used to initialize an AxieGene object from an hex representation.
-   * @param hex hex representation of an Axie's gene.
+   * Used to initialize an AxieGene object from a hex representation of the Axie's gene.
+   * @param hex hex representation of the Axie's gene.
+   * @param hexType represents if the provided hex gene is in 256 or 512 bit.
    */
-  constructor(hex: string) {
+  constructor(hex: string, hexType: HexType = HexType.Bit256) {
+    this._hexType = hexType;
     // Convert the hex string into binary and divided them to their respective groups.
-    this.geneBinGroup = AxieGene.parseHex(hex);
+    this.geneBinGroup = this.parseHex(hex);
     // Parse the binary values into their gene details.
     this._genes = this.parseGenes();
   }
 
   /**
-   * Getter for all of the Gene details of the Axie.
-   * @returns Gene Gene object that contains the set of gene information.
+   * Getter for all of the details of the Axie's gene.
+   * @returns Objects that contains all of the details about of the Axie's gene.
    */
   get genes(): Gene {
     return this._genes;
@@ -42,7 +71,7 @@ export class AxieGene {
 
   /**
    * Getter for the class of the Axie.
-   * @returns Cls class of the Axie.
+   * @returns Class of the Axie.
    */
   get cls(): Cls {
     return this._genes.cls;
@@ -50,15 +79,15 @@ export class AxieGene {
 
   /**
    * Getter for the region of the Axie.
-   * @returns Region region of the Axie.
+   * @returns Region of the Axie.
    */
   get region(): Region {
     return this._genes.region;
   }
 
   /**
-   * Getter for the tag of the Axie.
-   * @returns Tag tag of the Axie.
+   * Getter for the tag associated with the Axie.
+   * @returns Tag associated with the Axie.
    */
   get tag(): Tag {
     return this._genes.tag;
@@ -66,7 +95,7 @@ export class AxieGene {
 
   /**
    * Getter for the body skin of the Axie.
-   * @returns BodySkin body skin of the Axie.
+   * @returns Skin of the Axie's body.
    */
   get bodySkin(): BodySkin {
     return this._genes.bodySkin;
@@ -74,7 +103,7 @@ export class AxieGene {
 
   /**
    * Getter for the pattern genes of the Axie.
-   * @returns PatternGene set of pattern genes of the Axie.
+   * @returns Genes for the Axie's pattern.
    */
   get pattern(): PatternGene {
     return this._genes.pattern;
@@ -82,7 +111,7 @@ export class AxieGene {
 
   /**
    * Getter for the color genes of the Axie.
-   * @returns ColorGene set of color genes of the Axie.
+   * @returns Genes for the Axie's color.
    */
   get color(): ColorGene {
     return this._genes.color;
@@ -90,7 +119,7 @@ export class AxieGene {
 
   /**
    * Getter for the eye genes of the Axie.
-   * @returns Part set of eye genes of the Axie.
+   * @returns Genes for the Axie's eye.
    */
   get eyes(): Part {
     return this._genes.eyes;
@@ -98,7 +127,7 @@ export class AxieGene {
 
   /**
    * Getter for the ears genes of the Axie.
-   * @returns Part set of ears genes of the Axie.
+   * @returns Genes for the Axie's ears.
    */
   get ears(): Part {
     return this._genes.ears;
@@ -106,7 +135,7 @@ export class AxieGene {
 
   /**
    * Getter for the horn genes of the Axie.
-   * @returns Part set of horn genes of the Axie.
+   * @returns Genes for the Axie's horns.
    */
   get horn(): Part {
     return this._genes.horn;
@@ -114,7 +143,7 @@ export class AxieGene {
 
   /**
    * Getter for the mouth genes of the Axie.
-   * @returns Part set of mouth genes of the Axie.
+   * @returns Genes for the Axie's mouth.
    */
   get mouth(): Part {
     return this._genes.mouth;
@@ -122,7 +151,7 @@ export class AxieGene {
 
   /**
    * Getter for the back genes of the Axie.
-   * @returns Part set of back genes of the Axie.
+   * @returns Genes for the Axie's back.
    */
   get back(): Part {
     return this._genes.back;
@@ -130,21 +159,21 @@ export class AxieGene {
 
   /**
    * Getter for the tail genes of the Axie.
-   * @returns Part set of tail genes of the Axie.
+   * @returns Genes for the Axie's tail.
    */
   get tail(): Part {
     return this._genes.tail;
   }
 
   /**
-   * Converts the hex representation of an Axie's gene into binary and divides them into
-   * their respective groups
+   * Converts the hex into its binary representation and divides them based on their respective respective groups.
+   * Each group represents a part of an Axie.
    * @private
-   * @static
    * @param hex hex representation of an Axie's gene.
-   * @returns GeneBinGroup a collective object that contains the grouped binary representation of the Axie's gene.
+   * @returns An object that contains the binary value from the hex. The binary values are divided into their respective
+   * group based on the gene detail that they represent.
    */
-  private static parseHex(hex: string): GeneBinGroup {
+  private parseHex(hex: string): GeneBinGroup {
     let hexBin = '';
     // Remove the hex prefix.
     hex = hex.replace('0x', '');
@@ -152,24 +181,59 @@ export class AxieGene {
     Array.from(hex).forEach((c) => {
       hexBin += parseInt(c, 16).toString(2).padStart(4, '0');
     });
-    // Fill the binary values with 0 to form a 256 bit binary values.
-    hexBin = hexBin.padStart(256, '0');
+    // Fill the binary values with leadings 0s.
+    hexBin = hexBin.padStart(this._hexType.valueOf(), '0');
     // Divide the binary values into their respective groups.
     return {
-      cls: hexBin.slice(0, 4),
-      reserved: hexBin.slice(4, 8),
-      region: hexBin.slice(8, 13),
-      tag: hexBin.slice(13, 18),
-      bodySkin: hexBin.slice(18, 22),
-      xMas: hexBin.slice(22, 34),
-      pattern: hexBin.slice(34, 52),
-      color: hexBin.slice(52, 64),
-      eyes: hexBin.slice(64, 96),
-      mouth: hexBin.slice(96, 128),
-      ears: hexBin.slice(128, 160),
-      horn: hexBin.slice(160, 192),
-      back: hexBin.slice(192, 224),
-      tail: hexBin.slice(224, 256),
+      cls:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(0, 4)
+          : hexBin.slice(0, 5),
+      region:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(8, 13)
+          : hexBin.slice(22, 40),
+      tag:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(13, 18)
+          : hexBin.slice(40, 55),
+      bodySkin:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(18, 22)
+          : hexBin.slice(61, 65),
+      xMas: this._hexType === HexType.Bit256 ? hexBin.slice(22, 34) : '',
+      pattern:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(34, 52)
+          : hexBin.slice(65, 92),
+      color:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(52, 64)
+          : hexBin.slice(92, 110),
+      eyes:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(64, 96)
+          : hexBin.slice(149, 192),
+      mouth:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(96, 128)
+          : hexBin.slice(213, 256),
+      ears:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(128, 160)
+          : hexBin.slice(277, 320),
+      horn:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(160, 192)
+          : hexBin.slice(341, 384),
+      back:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(192, 224)
+          : hexBin.slice(405, 448),
+      tail:
+        this._hexType === HexType.Bit256
+          ? hexBin.slice(224, 256)
+          : hexBin.slice(469, 512),
     };
   }
 
@@ -216,6 +280,17 @@ export class AxieGene {
   private parseRegion(): Region {
     const ret = binRegionMap.get(this.geneBinGroup.region);
     if (ret === undefined) {
+      // Check if the axie has any japanese parts for 512 bit genes.
+      if (this._hexType === HexType.Bit512) {
+        if (this.geneBinGroup.eyes.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.mouth.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.ears.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.horn.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.back.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.tail.slice(0, 4) === '0011') return Region.Japan;
+        if (this.geneBinGroup.region === '000000000000000000')
+          return Region.Global;
+      }
       throw new Error('cannot recognize region');
     }
     return ret;
@@ -253,10 +328,11 @@ export class AxieGene {
    * @returns PatternGene pattern gene of the Axie.
    */
   private parsePatternGenes(): PatternGene {
+    const bSize = this.geneBinGroup.pattern.length / 3;
     return {
-      d: this.geneBinGroup.pattern.slice(0, 6),
-      r1: this.geneBinGroup.pattern.slice(6, 12),
-      r2: this.geneBinGroup.pattern.slice(12, 18),
+      d: this.geneBinGroup.pattern.slice(0, bSize),
+      r1: this.geneBinGroup.pattern.slice(bSize, bSize * 2),
+      r2: this.geneBinGroup.pattern.slice(bSize * 2, bSize * 3),
     };
   }
 
@@ -266,15 +342,24 @@ export class AxieGene {
    * @returns ColorGene color gene of the Axie.
    */
   private parseColorGenes(): ColorGene {
+    const bSize = this.geneBinGroup.color.length / 3;
     const cls = this.parseClass();
-    const d = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(0, 4));
-    const r1 = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(4, 8));
-    const r2 = classColorMap
-      .get(cls)
-      ?.get(this.geneBinGroup.color.slice(8, 12));
-    if (d === undefined || r1 === undefined || r2 === undefined)
-      throw new Error('cannot recognize color genes');
-    else return { d, r1, r2 };
+    const d =
+      classColorMap
+        .get(cls)
+        ?.get(this.geneBinGroup.color.slice(0, bSize).slice(-4)) ||
+      this.geneBinGroup.color.slice(0, bSize);
+    const r1 =
+      classColorMap
+        .get(cls)
+        ?.get(this.geneBinGroup.color.slice(bSize, bSize * 2).slice(-4)) ||
+      this.geneBinGroup.color.slice(bSize, bSize * 2);
+    const r2 =
+      classColorMap
+        .get(cls)
+        ?.get(this.geneBinGroup.color.slice(bSize * 2, bSize * 3).slice(-4)) ||
+      this.geneBinGroup.color.slice(bSize * 2, bSize * 3);
+    return { d, r1, r2 };
   }
 
   /**
@@ -307,28 +392,71 @@ export class AxieGene {
     }
 
     // Get the region and skin values needed to parse the correct part gene
-    const region = this.parseRegion();
-    const skinBin = partBin.slice(0, 2);
+    const regionBin = this.geneBinGroup.region;
+
+    const dSkinBin =
+      this._hexType === HexType.Bit256
+        ? partBin.slice(0, 2)
+        : partBin.slice(0, 4);
+    const rSkinBin = this._hexType === HexType.Bit256 ? '00' : dSkinBin;
+
+    const dSkin = this.parsePartSkin(regionBin, dSkinBin);
+    const rSkin = this.parsePartSkin(regionBin, rSkinBin);
 
     // Get the dominant gene
-    const dClass = this.parsePartClass(partBin.slice(2, 6));
-    const dBin = partBin.slice(6, 12);
-    const dName = this.parsePartName(dClass, partType, region, dBin, skinBin);
+    const dClass = this.parsePartClass(
+      this._hexType === HexType.Bit256
+        ? partBin.slice(2, 6)
+        : partBin.slice(5, 9)
+    );
+    const dBin =
+      this._hexType === HexType.Bit256
+        ? partBin.slice(6, 12)
+        : partBin.slice(11, 17);
+    const dName = this.parsePartName(dClass, partType, regionBin, dBin, dSkin);
     const d = this.parsePartGene(partType, dName);
 
     // Get the recessive 1 gene
-    const r1Class = this.parsePartClass(partBin.slice(12, 16));
-    const r1Bin = partBin.slice(16, 22);
-    const r1Name = this.parsePartName(r1Class, partType, region, r1Bin);
+    const r1Class = this.parsePartClass(
+      this._hexType === HexType.Bit256
+        ? partBin.slice(12, 16)
+        : partBin.slice(18, 22)
+    );
+    const r1Bin =
+      this._hexType === HexType.Bit256
+        ? partBin.slice(16, 22)
+        : partBin.slice(24, 30);
+    const r1Name = this.parsePartName(
+      r1Class,
+      partType,
+      regionBin,
+      r1Bin,
+      rSkin
+    );
     const r1 = this.parsePartGene(partType, r1Name);
 
     // Get the recessive 2 gene
-    const r2Class = this.parsePartClass(partBin.slice(22, 26));
-    const r2Bin = partBin.slice(26, 32);
-    const r2Name = this.parsePartName(r2Class, partType, region, r2Bin);
+    const r2Class = this.parsePartClass(
+      this._hexType === HexType.Bit256
+        ? partBin.slice(22, 26)
+        : partBin.slice(31, 35)
+    );
+    const r2Bin =
+      this._hexType === HexType.Bit256
+        ? partBin.slice(26, 32)
+        : partBin.slice(37, 48);
+    const r2Name = this.parsePartName(
+      r2Class,
+      partType,
+      regionBin,
+      r2Bin,
+      rSkin
+    );
     const r2 = this.parsePartGene(partType, r2Name);
 
-    return { d, r1, r2, mystic: skinBin === '11' };
+    const mystic = dSkin === PartSkin.Mystic || dSkinBin === '0001';
+
+    return { d, r1, r2, mystic };
   }
 
   /**
@@ -350,26 +478,28 @@ export class AxieGene {
    * @private
    * @param cls class of the Axie's body part.
    * @param partType part type that will be parsed.
-   * @param region region of the Axie's body part.
-   * @param skinBin binary representation of the body part's skin.
+   * @param regionBin region binary of the Axie.
+   * @param partBin part binary of the Axie.
+   * @param skin skin type of the Axie's part.
    * @returns Cls class of the Axie.
    */
   private parsePartName(
     cls: Cls,
     partType: PartType,
-    region: Region,
+    regionBin: string,
     partBin: string,
-    skinBin: string = '00'
+    skin: PartSkin
   ): string {
-    const skin = this.parsePartSkin(region, skinBin);
     // @ts-ignore
     const part = traitsJson[cls][partType][partBin];
     if (part === undefined) {
       throw new Error('cannot recognize part binary');
     }
-    const ret = part[skin];
+    let ret = part[skin];
     if (ret === undefined) {
-      throw new Error('cannot recognize part skin');
+      const fallBack = part[PartSkin.Global];
+      if (fallBack === undefined) throw new Error('cannot recognize part skin');
+      ret = fallBack;
     }
     return ret;
   }
@@ -384,7 +514,8 @@ export class AxieGene {
    */
   private parsePartGene(partType: PartType, partName: string): PartGene {
     const partId = `${partType}-${partName.toLowerCase()}`
-      .replace(' ', '-')
+      .split(' ')
+      .join('-')
       .replace("'", '');
     // @ts-ignore
     const partJson = partsJson[partId];
@@ -403,21 +534,19 @@ export class AxieGene {
   /**
    * Parses the skin of the part based on its region and skin binary value.
    * @private
-   * @param region region of the Axie.
+   * @param regionBin region binary of the Axie.
    * @param skinBin skin binary of the Axie.
    * @returns PartSkin skin of the Axie's body part.
    */
-  private parsePartSkin(region: Region, skinBin: string): PartSkin {
-    switch (skinBin) {
-      case '00':
-        if (region === Region.Global) return PartSkin.Global;
-        else return PartSkin.Japan;
-      case '10':
-        return PartSkin.Xmas;
-      case '11':
-        return PartSkin.Mystic;
-      default:
-        throw new Error('cannot recognize part skin');
+  private parsePartSkin(regionBin: string, skinBin: string): PartSkin {
+    let ret = binPartSkinMap.get(skinBin);
+    if (skinBin === '00') {
+      if (this.geneBinGroup.xMas === '010101010101') ret = PartSkin.Xmas1;
+      else ret = binPartSkinMap.get(regionBin);
     }
+    if (ret === undefined) {
+      throw new Error('cannot recognize part skin');
+    }
+    return ret;
   }
 }
