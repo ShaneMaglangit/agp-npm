@@ -328,18 +328,10 @@ export class AxieGene {
   private parseColorGenes(): ColorGene {
     const bSize = this.geneBinGroup.color.length / 3;
     const cls = this.parseClass();
-    const d = classColorMap
-      .get(cls)
-      ?.get(this.geneBinGroup.color.slice(0, bSize));
-    const r1 = classColorMap
-      .get(cls)
-      ?.get(this.geneBinGroup.color.slice(bSize, bSize * 2).slice(-4));
-    const r2 = classColorMap
-      .get(cls)
-      ?.get(this.geneBinGroup.color.slice(bSize * 2, bSize * 3).slice(-4));
-    if (d === undefined || r1 === undefined || r2 === undefined)
-      throw new Error('cannot recognize color genes');
-    else return { d, r1, r2 };
+    const d = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(0, bSize)) || this.geneBinGroup.color.slice(0, bSize);
+    const r1 = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(bSize, bSize * 2).slice(-4)) || this.geneBinGroup.color.slice(bSize, bSize * 2);
+    const r2 = classColorMap.get(cls)?.get(this.geneBinGroup.color.slice(bSize * 2, bSize * 3).slice(-4)) || this.geneBinGroup.color.slice(bSize * 2, bSize * 3);
+    return { d, r1, r2 };
   }
 
   /**
@@ -373,7 +365,7 @@ export class AxieGene {
 
     // Get the region and skin values needed to parse the correct part gene
     const regionBin = this.geneBinGroup.region;
-    const skinBin = partBin.slice(0, 2);
+    const skinBin = this._hexType === HexType.Bit256 ? partBin.slice(0, 2) : partBin.slice(0, 4);
 
     // Get the dominant gene
     const dClass = this.parsePartClass(partBin.slice(2, 6));
@@ -415,7 +407,8 @@ export class AxieGene {
    * @private
    * @param cls class of the Axie's body part.
    * @param partType part type that will be parsed.
-   * @param region region of the Axie's body part.
+   * @param regionBin region binary of the Axie.
+   * @param partBin part binary of the Axie.
    * @param skinBin binary representation of the body part's skin.
    * @returns Cls class of the Axie.
    */
@@ -424,7 +417,7 @@ export class AxieGene {
     partType: PartType,
     regionBin: string,
     partBin: string,
-    skinBin: string = '00'
+    skinBin: string = '00',
   ): string {
     const skin = this.parsePartSkin(regionBin, skinBin);
     // @ts-ignore
@@ -432,9 +425,11 @@ export class AxieGene {
     if (part === undefined) {
       throw new Error('cannot recognize part binary');
     }
-    const ret = part[skin];
+    let ret = part[skin];
     if (ret === undefined) {
-      throw new Error('cannot recognize part skin');
+      const fallBack = part[PartSkin.Global]
+      if (fallBack === undefined) throw new Error('cannot recognize part skin');
+      ret = fallBack
     }
     return ret;
   }
@@ -450,7 +445,7 @@ export class AxieGene {
   private parsePartGene(partType: PartType, partName: string): PartGene {
     const partId = `${partType}-${partName.toLowerCase()}`
       .replace(' ', '-')
-      .replace("'", '');
+      .replace('\'', '');
     // @ts-ignore
     const partJson = partsJson[partId];
     if (partJson === undefined) {
@@ -468,14 +463,14 @@ export class AxieGene {
   /**
    * Parses the skin of the part based on its region and skin binary value.
    * @private
-   * @param region region of the Axie.
+   * @param regionBin region binary of the Axie.
    * @param skinBin skin binary of the Axie.
    * @returns PartSkin skin of the Axie's body part.
    */
   private parsePartSkin(regionBin: string, skinBin: string): PartSkin {
-    let ret = binPartSkinMap.get(skinBin)
+    let ret = binPartSkinMap.get(skinBin);
     if (skinBin === '00') {
-      if(this.geneBinGroup.xMas === '010101010101') ret = PartSkin.Xmas1;
+      if (this.geneBinGroup.xMas === '010101010101') ret = PartSkin.Xmas1;
       else ret = binPartSkinMap.get(regionBin);
     }
     if (ret === undefined) {
