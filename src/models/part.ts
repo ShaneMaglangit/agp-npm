@@ -33,7 +33,7 @@ export enum PartSkin {
   Mystic = 'mystic',
   Japan = 'japan',
   Xmas1 = 'xmas1',
-  Xmas2 = 'xmas2'
+  Xmas2 = 'xmas2',
 }
 
 export const binPartSkinMap = new Map([
