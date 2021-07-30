@@ -59,6 +59,13 @@ const hex = "0x280000000000010040412090830C0000000101942040440A00010190284082040
 const axieGene = new AxieGene(hex, HexType.Bit512);
 ```
 
+## Gene Quality
+
+You may also get the quality of the genes directly through the AxieGene object.
+```ts
+axieGene.getGeneQuality();
+```
+
 
 This object automatically handles the parsing of the hex value for you. You may simply use the accessors of the class to
 get the gene information that you want.
