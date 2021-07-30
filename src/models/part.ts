@@ -36,7 +36,6 @@ export enum PartSkin {
   Xmas2 = 'xmas2'
 }
 
-
 export const binPartSkinMap = new Map([
   // 256 Classes
   ['00000', PartSkin.Global],
