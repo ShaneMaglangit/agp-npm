@@ -288,3 +288,17 @@ describe('AxieGene_Mystic_512bit', () => {
     expect(axieGene.horn.mystic).toBe(false);
   });
 });
+
+describe('AxieGene_Origin', () => {
+  const axieGene = new AxieGene('0x300040000B14D23414421004084308C20C221802044418820C42100410240846');
+  it('parse tag', () => {
+    expect(axieGene.tag).toBe(Tag.Origin);
+  });
+});
+
+describe('AxieGene_Origin_512bit', () => {
+  const axieGene = new AxieGene('0x18000000000003000300C0E083100000000100141040800400010008106043020001000C0840C002000100041080C2020001000C104080040001001008804106', HexType.Bit512);
+  it('parse tag', () => {
+    expect(axieGene.tag).toBe(Tag.Origin);
+  });
+});
