@@ -549,4 +549,34 @@ export class AxieGene {
     }
     return ret;
   }
+
+  /**
+   * Calculates the purity or gene quality of the Axie's gene.
+   * @returns a number that represents the quality of the gene in percentage.
+   */
+  getGeneQuality(): number {
+    let geneQuality = 0;
+    geneQuality += this.getPartQuality(this._genes.eyes);
+    geneQuality += this.getPartQuality(this._genes.ears);
+    geneQuality += this.getPartQuality(this._genes.mouth);
+    geneQuality += this.getPartQuality(this._genes.horn);
+    geneQuality += this.getPartQuality(this._genes.back);
+    geneQuality += this.getPartQuality(this._genes.tail);
+    return parseFloat(geneQuality.toFixed(2));
+  }
+
+  /**
+   * Calculate the purity or gene quality of the Axie's individual parts.
+   * @param part part genes the will be used for the calculation.
+   * @private
+   * @returns an integer that represents the quality of the individual part in percentage.
+   */
+  private getPartQuality(part: Part): number {
+    const cls = this._genes.cls;
+    let partQuality = 0;
+    partQuality += part.d.cls === cls ? 76/6 : 0;
+    partQuality += part.r1.cls === cls ? 3 : 0;
+    partQuality += part.r2.cls === cls ? 1 : 0;
+    return partQuality;
+  }
 }

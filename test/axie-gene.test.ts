@@ -302,3 +302,14 @@ describe('AxieGene_Origin_512bit', () => {
     expect(axieGene.tag).toBe(Tag.Origin);
   });
 });
+
+describe('AxieGene_Quality', () => {
+  const axieGeneP6 = new AxieGene('0x50000000021053031443110414a5280814250802146508c414451108146230c2');
+  it('gene quality pure 6', () => {
+    expect(axieGeneP6.getGeneQuality()).toBe(88);
+  });
+  const axieGeneP2 = new AxieGene('0x300000000b881322104308c20c2110c40c201908108208ca148120cc10430806');
+  it('gene quality pure 2', () => {
+    expect(axieGeneP2.getGeneQuality()).toBe(35.33);
+  });
+})
