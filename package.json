@@ -1,6 +1,6 @@
 {
   "name": "agp-npm",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "author": "Shane Maglangit",
   "license": "GPL-3.0",
   "description": "Gene parsing package for Axie Infinity.",
@@ -11,7 +11,7 @@
     "coverage": "nyc npm test",
     "docs": "typedoc src --out docs",
     "develop": "tsc && node dist/src/axie-gene.js",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "test": "jest",
     "prepare": "npm run build",
