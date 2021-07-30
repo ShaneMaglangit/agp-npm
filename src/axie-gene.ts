@@ -552,7 +552,7 @@ export class AxieGene {
 
   /**
    * Calculates the purity or gene quality of the Axie's gene.
-   * @returns an integer that represents the quality of the gene in percentage.
+   * @returns a number that represents the quality of the gene in percentage.
    */
   getGeneQuality(): number {
     let geneQuality = 0;
@@ -562,7 +562,7 @@ export class AxieGene {
     geneQuality += this.getPartQuality(this._genes.horn);
     geneQuality += this.getPartQuality(this._genes.back);
     geneQuality += this.getPartQuality(this._genes.tail);
-    return geneQuality;
+    return parseFloat(geneQuality.toFixed(2));
   }
 
   /**
