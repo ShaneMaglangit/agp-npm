@@ -22,8 +22,8 @@ export const binClassMap = new Map([
   ['0011', Cls.Plant],
   ['0100', Cls.Aquatic],
   ['0101', Cls.Reptile],
-  ['0111', Cls.Dawn],
   ['1000', Cls.Mech],
+  ['1001', Cls.Dawn],
   ['1010', Cls.Dusk],
   // 512 Classes
   ['00000', Cls.Beast],
