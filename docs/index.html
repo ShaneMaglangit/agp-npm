@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>agp-ts</title>
-	<meta name="description" content="Documentation for agp-ts">
+	<title>agp-npm</title>
+	<meta name="description" content="Documentation for agp-npm">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script async src="assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">agp-ts</a>
+					<a href="index.html" class="title">agp-npm</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -50,7 +50,7 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<h1>agp-ts</h1>
+			<h1>agp-npm</h1>
 		</div>
 	</div>
 </header>
@@ -58,46 +58,82 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#agp-ts" id="agp-ts" style="color: inherit; text-decoration: none;">
-					<h1>agp-ts</h1>
+				<a href="#agp-npm" id="agp-npm" style="color: inherit; text-decoration: none;">
+					<h1>agp-npm</h1>
 				</a>
-				<p>Package <code>agp-ts</code> is a gene parsing package for Axie Infinity.</p>
-				<p>The name agp stands for &quot;Axie Gene Parser&quot; which decodes the hex representation of an Axie&#39;s gene into a human readable format.</p>
+				<p><a href="https://badge.fury.io/js/agp-npm"><img src="https://badge.fury.io/js/agp-npm.svg" alt="npm version"></a></p>
+				<p>Package <code>agp-npm</code> is a gene parsing package for Axie Infinity.</p>
+				<p>The name agp stands for &quot;Axie Gene Parser&quot; which decodes the hex representation of an Axie&#39;s gene into a human readable
+				format.</p>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
 					<h2>Documentation</h2>
 				</a>
-				<p>For more detailed documentation, see <a href="https://shanemaglangit.github.io/agp-ts">AGP-TS Documentation</a>.</p>
+				<p>For more detailed documentation, see <a href="https://shanemaglangit.github.io/agp-npm">agp-npm documentation</a>.</p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h2>Install</h2>
 				</a>
-				<p>agp-ts runs on Node.js and is available as a NPM package.</p>
-				<pre><code class="language-sh"><span style="color: #000000">npm install agp-ts</span>
+				<p>agp-npm runs on Node.js and is available as a NPM package.</p>
+				<pre><code class="language-sh"><span style="color: #000000">npm install agp-npm</span>
 </code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
-				<p>To get started, you&#39;ll first need to get the gene of an Axie in hex. You may use the <a href="https://axie-graphql.web.app/">Axie Infinity GraphQL endpoint</a> to get this detail. For this example, let&#39;s use the hex <code>0x11c642400a028ca14a428c20cc011080c61180a0820180604233082</code></p>
+				<p>To get started, you&#39;ll first need to get the gene of an Axie in hex. You may use
+					the <a href="https://axie-graphql.web.app/">Axie Infinity GraphQL endpoint</a> to get this detail. For this example, let&#39;s use the
+				hex <code>0x11c642400a028ca14a428c20cc011080c61180a0820180604233082</code></p>
 				<p>Let us create an AxieGene object from the hex string that we have.</p>
-				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">hex</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;0x11c642400a028ca14a428c20cc011080c61180a0820180604233082&quot;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #001080">hex</span><span style="color: #000000">);</span>
+				<p><strong>JavaScript</strong></p>
+				<p>256 Bit Genes</p>
+				<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AxieGene</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;agp-npm/dist/axie-gene&quot;</span><span style="color: #000000">); </span><span style="color: #008000">// Defaults to HexType.Bit256</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;0x11c642400a028ca14a428c20cc011080c61180a0820180604233082&quot;</span><span style="color: #000000">);</span>
 </code></pre>
-				<p>This object automatically handles the parsing of the hex value for you. You may simply use the accessors of the class to get the gene information that you want.</p>
+				<p>512 Bit Genes</p>
+				<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AxieGene</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;agp-npm/dist/axie-gene&quot;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">hex</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;0x280000000000010040412090830C0000000101942040440A00010190284082040001018C2061000A000101801021400400010180204080060001018418404008&quot;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #001080">hex</span><span style="color: #000000">, </span><span style="color: #001080">HexType</span><span style="color: #000000">.</span><span style="color: #001080">Bit512</span><span style="color: #000000">);</span>
+</code></pre>
+				<p><strong>TypeScript</strong></p>
+				<p>256 Bit Genes</p>
+				<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;0x11c642400a028ca14a428c20cc011080c61180a0820180604233082&quot;</span><span style="color: #000000">);</span>
+</code></pre>
+				<p>512 Bit Genes</p>
+				<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">hex</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;0x280000000000010040412090830C0000000101942040440A00010190284082040001018C2061000A000101801021400400010180204080060001018418404008&quot;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #001080">hex</span><span style="color: #000000">, </span><span style="color: #001080">HexType</span><span style="color: #000000">.</span><span style="color: #001080">Bit512</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#gene-quality" id="gene-quality" style="color: inherit; text-decoration: none;">
+					<h2>Gene Quality</h2>
+				</a>
+				<p>You may also get the quality of the genes directly through the AxieGene object.</p>
+				<pre><code class="language-ts"><span style="color: #001080">axieGene</span><span style="color: #000000">.</span><span style="color: #795E26">getGeneQuality</span><span style="color: #000000">();</span>
+</code></pre>
+				<p>This object automatically handles the parsing of the hex value for you. You may simply use the accessors of the class to
+				get the gene information that you want.</p>
 				<p>Here are the properties that you can get from the AxieGene object.</p>
 				<ul>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#genes">genes</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#cls">cls</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#region">region</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#tag">tag</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#bodySkin">bodySkin</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#pattern">pattern</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#color">color</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#eyes">eyes</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#mouth">mouth</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#ears">ears</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#horn">horn</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#back">back</a></li>
-					<li><a href="https://shanemaglangit.github.io/agp-ts/classes/axie_gene.AxieGene.html#tail">tail</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#genes">genes</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#cls">cls</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#region">region</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#tag">tag</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#bodySkin">bodySkin</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#pattern">pattern</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#color">color</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#eyes">eyes</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#mouth">mouth</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#ears">ears</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#horn">horn</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#back">back</a></li>
+					<li><a href="https://shanemaglangit.github.io/agp-npm/classes/axie_gene.AxieGene.html#tail">tail</a></li>
 				</ul>
+				<a href="#go-lang-support" id="go-lang-support" style="color: inherit; text-decoration: none;">
+					<h2>Go Lang Support</h2>
+				</a>
+				<p>I also released a similar package for Go. <a href="https://github.com/ShaneMaglangit/agp">Do check it out!</a></p>
+				<a href="#support-the-author" id="support-the-author" style="color: inherit; text-decoration: none;">
+					<h2>Support the Author</h2>
+				</a>
+				<p>Love this module? Feel free to buy me a coffee and motivate me to work on more stuffs like this!</p>
+				<p><strong>Ronin Address:</strong> ronin:789c9b253eba265f0079e3ebcaaea2503eb31bb3<br><strong>ETH Address:</strong> 0x9F50E3606caf22ff5E0E03F0eb02DE3Fa2786535<br><strong>Paypal:</strong> paypal.me/shanemaglangit</p>
+				<p>Support does not need to have any monetary value. I would also appreciate if you leave a star!</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
