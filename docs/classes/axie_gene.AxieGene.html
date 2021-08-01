@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AxieGene | agp-ts</title>
-	<meta name="description" content="Documentation for agp-ts">
+	<title>AxieGene | agp-npm</title>
+	<meta name="description" content="Documentation for agp-npm">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">agp-ts</a>
+					<a href="../index.html" class="title">agp-npm</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -52,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">agp-ts</a>
+					<a href="../modules.html">agp-npm</a>
 				</li>
 				<li>
 					<a href="../modules/axie_gene.html">axie-gene</a>
@@ -71,9 +71,17 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Contains the gene information of an Axie. The information are generated based on the hex string provided
-						on the object&#39;s constructor call.</p>
+						<p>Stores the gene information of an Axie. These informations are parsed from the provided hex representation of
+						the Axie&#39;s gene on its constructor call. Supports both 256 and 512 bit hex genes.</p>
 					</div>
+					<p><strong>Usage</strong></p>
+					<p>Javascript</p>
+					<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">AxieGene</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;agp-npm-test/dist/src/axie-gene&quot;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;0x11c642400a028ca14a428c20cc011080c61180a0820180604233082&quot;</span><span style="color: #000000">);</span>
+</code></pre>
+					<p>Typescript</p>
+					<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">axieGene</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">AxieGene</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;0x11c642400a028ca14a428c20cc011080c61180a0820180604233082&quot;</span><span style="color: #000000">);</span>
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -98,6 +106,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#_genes" class="tsd-kind-icon">_genes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#_hexType" class="tsd-kind-icon">_hex<wbr>Type</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#geneBinGroup" class="tsd-kind-icon">gene<wbr>Bin<wbr>Group</a></li>
 							</ul>
 						</section>
@@ -119,13 +128,16 @@
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="axie_gene.AxieGene.html#tail" class="tsd-kind-icon">tail</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="axie_gene.AxieGene.html#getGeneQuality" class="tsd-kind-icon">get<wbr>Gene<wbr>Quality</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#getPartQuality" class="tsd-kind-icon">get<wbr>Part<wbr>Quality</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parseBodySkin" class="tsd-kind-icon">parse<wbr>Body<wbr>Skin</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parseClass" class="tsd-kind-icon">parse<wbr>Class</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parseColorGenes" class="tsd-kind-icon">parse<wbr>Color<wbr>Genes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parseGenes" class="tsd-kind-icon">parse<wbr>Genes</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parseHex" class="tsd-kind-icon">parse<wbr>Hex</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parsePart" class="tsd-kind-icon">parse<wbr>Part</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parsePartClass" class="tsd-kind-icon">parse<wbr>Part<wbr>Class</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parsePartGene" class="tsd-kind-icon">parse<wbr>Part<wbr>Gene</a></li>
@@ -134,7 +146,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parsePatternGenes" class="tsd-kind-icon">parse<wbr>Pattern<wbr>Genes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parseRegion" class="tsd-kind-icon">parse<wbr>Region</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="axie_gene.AxieGene.html#parseTag" class="tsd-kind-icon">parse<wbr>Tag</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="axie_gene.AxieGene.html#parseHex" class="tsd-kind-icon">parse<wbr>Hex</a></li>
 							</ul>
 						</section>
 					</div>
@@ -146,18 +157,18 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Axie<wbr>Gene<span class="tsd-signature-symbol">(</span>hex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="axie_gene.AxieGene.html" class="tsd-signature-type" data-tsd-kind="Class">AxieGene</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Axie<wbr>Gene<span class="tsd-signature-symbol">(</span>hex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, hexType<span class="tsd-signature-symbol">?: </span><a href="../enums/axie_gene.HexType.html" class="tsd-signature-type" data-tsd-kind="Enumeration">HexType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="axie_gene.AxieGene.html" class="tsd-signature-type" data-tsd-kind="Class">AxieGene</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L27">axie-gene.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L56">axie-gene.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Used to initialize an AxieGene object from an hex representation.</p>
+									<p>Used to initialize an AxieGene object from a hex representation of the Axie&#39;s gene.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -166,7 +177,15 @@
 									<h5>hex: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>hex representation of an Axie&#39;s gene.</p>
+											<p>hex representation of the Axie&#39;s gene.</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>hexType: <a href="../enums/axie_gene.HexType.html" class="tsd-signature-type" data-tsd-kind="Enumeration">HexType</a><span class="tsd-signature-symbol"> = ...</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>represents if the provided hex gene is in 256 or 512 bit.</p>
 										</div>
 									</div>
 								</li>
@@ -184,12 +203,27 @@
 					<div class="tsd-signature tsd-kind-icon">_genes<span class="tsd-signature-symbol">:</span> <a href="../interfaces/models_gene.Gene.html" class="tsd-signature-type" data-tsd-kind="Interface">Gene</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L21">axie-gene.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L47">axie-gene.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Stores the gene details after the binary values are parsed.</p>
+							<p>Stores the gene details from the parsed binary values.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_hexType" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> _hex<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">_hex<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="../enums/axie_gene.HexType.html" class="tsd-signature-type" data-tsd-kind="Enumeration">HexType</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L49">axie-gene.ts:49</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stores the gene hex type wether its in 256 or 512 bit.</p>
 						</div>
 					</div>
 				</section>
@@ -199,12 +233,12 @@
 					<div class="tsd-signature tsd-kind-icon">gene<wbr>Bin<wbr>Group<span class="tsd-signature-symbol">:</span> <a href="../interfaces/models_internal_gene_bin_group.GeneBinGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">GeneBinGroup</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L19">axie-gene.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L45">axie-gene.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Stores the grouped binary values of the provided hex gene.</p>
+							<p>Stores the grouped binary values from the hex value.</p>
 						</div>
 					</div>
 				</section>
@@ -221,7 +255,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L126">axie-gene.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L156">axie-gene.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -230,7 +264,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a></h4>
-							<p>Part set of back genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s back.</p>
 						</li>
 					</ul>
 				</section>
@@ -244,7 +278,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L70">axie-gene.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L100">axie-gene.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,7 +287,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/models_bodySkin.BodySkin.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BodySkin</a></h4>
-							<p>BodySkin body skin of the Axie.</p>
+							<p>Skin of the Axie&#39;s body.</p>
 						</li>
 					</ul>
 				</section>
@@ -267,7 +301,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L46">axie-gene.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L76">axie-gene.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -276,7 +310,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/models_cls.Cls.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Cls</a></h4>
-							<p>Cls class of the Axie.</p>
+							<p>Class of the Axie.</p>
 						</li>
 					</ul>
 				</section>
@@ -290,7 +324,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L86">axie-gene.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L116">axie-gene.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -299,7 +333,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_color.ColorGene.html" class="tsd-signature-type" data-tsd-kind="Interface">ColorGene</a></h4>
-							<p>ColorGene set of color genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s color.</p>
 						</li>
 					</ul>
 				</section>
@@ -313,7 +347,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L102">axie-gene.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L132">axie-gene.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -322,7 +356,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a></h4>
-							<p>Part set of ears genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s ears.</p>
 						</li>
 					</ul>
 				</section>
@@ -336,7 +370,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L94">axie-gene.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L124">axie-gene.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -345,7 +379,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a></h4>
-							<p>Part set of eye genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s eye.</p>
 						</li>
 					</ul>
 				</section>
@@ -359,16 +393,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L38">axie-gene.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L68">axie-gene.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Getter for all of the Gene details of the Axie.</p>
+									<p>Getter for all of the details of the Axie&#39;s gene.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_gene.Gene.html" class="tsd-signature-type" data-tsd-kind="Interface">Gene</a></h4>
-							<p>Gene Gene object that contains the set of gene information.</p>
+							<p>Objects that contains all of the details about of the Axie&#39;s gene.</p>
 						</li>
 					</ul>
 				</section>
@@ -382,7 +416,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L110">axie-gene.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L140">axie-gene.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -391,7 +425,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a></h4>
-							<p>Part set of horn genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s horns.</p>
 						</li>
 					</ul>
 				</section>
@@ -405,7 +439,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L118">axie-gene.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L148">axie-gene.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -414,7 +448,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a></h4>
-							<p>Part set of mouth genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s mouth.</p>
 						</li>
 					</ul>
 				</section>
@@ -428,7 +462,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L78">axie-gene.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L108">axie-gene.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -437,7 +471,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_pattern.PatternGene.html" class="tsd-signature-type" data-tsd-kind="Interface">PatternGene</a></h4>
-							<p>PatternGene set of pattern genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s pattern.</p>
 						</li>
 					</ul>
 				</section>
@@ -451,7 +485,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L54">axie-gene.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L84">axie-gene.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -460,7 +494,7 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/models_region.Region.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Region</a></h4>
-							<p>Region region of the Axie.</p>
+							<p>Region of the Axie.</p>
 						</li>
 					</ul>
 				</section>
@@ -474,16 +508,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L62">axie-gene.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L92">axie-gene.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Getter for the tag of the Axie.</p>
+									<p>Getter for the tag associated with the Axie.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/models_tag.Tag.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Tag</a></h4>
-							<p>Tag tag of the Axie.</p>
+							<p>Tag associated with the Axie.</p>
 						</li>
 					</ul>
 				</section>
@@ -497,7 +531,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L134">axie-gene.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L164">axie-gene.ts:164</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -506,13 +540,68 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a></h4>
-							<p>Part set of tail genes of the Axie.</p>
+							<p>Genes for the Axie&#39;s tail.</p>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getGeneQuality" class="tsd-anchor"></a>
+					<h3>get<wbr>Gene<wbr>Quality</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Gene<wbr>Quality<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L557">axie-gene.ts:557</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculates the purity or gene quality of the Axie&#39;s gene.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>a number that represents the quality of the gene in percentage.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="getPartQuality" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Part<wbr>Quality</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Part<wbr>Quality<span class="tsd-signature-symbol">(</span>part<span class="tsd-signature-symbol">: </span><a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L574">axie-gene.ts:574</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculate the purity or gene quality of the Axie&#39;s individual parts.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>part: <a href="../interfaces/models_part.Part.html" class="tsd-signature-type" data-tsd-kind="Interface">Part</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>part genes the will be used for the calculation.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>an integer that represents the quality of the individual part in percentage.</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="parseBodySkin" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Body<wbr>Skin</h3>
@@ -523,7 +612,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L241">axie-gene.ts:241</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L317">axie-gene.ts:317</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +635,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L202">axie-gene.ts:202</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L267">axie-gene.ts:267</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -569,7 +658,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L267">axie-gene.ts:267</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L344">axie-gene.ts:344</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -592,7 +681,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L180">axie-gene.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L245">axie-gene.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -606,6 +695,40 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="parseHex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Hex</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Hex<span class="tsd-signature-symbol">(</span>hex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/models_internal_gene_bin_group.GeneBinGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">GeneBinGroup</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L176">axie-gene.ts:176</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts the hex into its binary representation and divides them based on their respective respective groups.
+									Each group represents a part of an Axie.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>hex: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>hex representation of an Axie&#39;s gene.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_internal_gene_bin_group.GeneBinGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">GeneBinGroup</a></h4>
+							<p>An object that contains the binary value from the hex. The binary values are divided into their respective
+							group based on the gene detail that they represent.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="parsePart" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Part</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -615,7 +738,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L282">axie-gene.ts:282</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L371">axie-gene.ts:371</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -647,7 +770,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L336">axie-gene.ts:336</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L468">axie-gene.ts:468</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -679,7 +802,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L375">axie-gene.ts:375</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L515">axie-gene.ts:515</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -712,13 +835,13 @@
 					<a name="parsePartName" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Part<wbr>Name</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Part<wbr>Name<span class="tsd-signature-symbol">(</span>cls<span class="tsd-signature-symbol">: </span><a href="../enums/models_cls.Cls.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Cls</a>, partType<span class="tsd-signature-symbol">: </span><a href="../enums/models_part.PartType.html" class="tsd-signature-type" data-tsd-kind="Enumeration">PartType</a>, region<span class="tsd-signature-symbol">: </span><a href="../enums/models_region.Region.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Region</a>, partBin<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, skinBin<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Part<wbr>Name<span class="tsd-signature-symbol">(</span>cls<span class="tsd-signature-symbol">: </span><a href="../enums/models_cls.Cls.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Cls</a>, partType<span class="tsd-signature-symbol">: </span><a href="../enums/models_part.PartType.html" class="tsd-signature-type" data-tsd-kind="Enumeration">PartType</a>, regionBin<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, partBin<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, skin<span class="tsd-signature-symbol">: </span><a href="../enums/models_part.PartSkin.html" class="tsd-signature-type" data-tsd-kind="Enumeration">PartSkin</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L353">axie-gene.ts:353</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L486">axie-gene.ts:486</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -741,18 +864,21 @@
 									</div>
 								</li>
 								<li>
-									<h5>region: <a href="../enums/models_region.Region.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Region</a></h5>
+									<h5>regionBin: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>region of the Axie&#39;s body part.</p>
+										<p>region binary of the Axie.</p>
 									</div>
 								</li>
 								<li>
 									<h5>partBin: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>part binary of the Axie.</p>
+									</div>
 								</li>
 								<li>
-									<h5>skinBin: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;00&#x27;</span></h5>
+									<h5>skin: <a href="../enums/models_part.PartSkin.html" class="tsd-signature-type" data-tsd-kind="Enumeration">PartSkin</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>binary representation of the body part&#39;s skin.</p>
+										<p>skin type of the Axie&#39;s part.</p>
 									</div>
 								</li>
 							</ul>
@@ -765,13 +891,13 @@
 					<a name="parsePartSkin" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Part<wbr>Skin</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Part<wbr>Skin<span class="tsd-signature-symbol">(</span>region<span class="tsd-signature-symbol">: </span><a href="../enums/models_region.Region.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Region</a>, skinBin<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/models_part.PartSkin.html" class="tsd-signature-type" data-tsd-kind="Enumeration">PartSkin</a></li>
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Part<wbr>Skin<span class="tsd-signature-symbol">(</span>regionBin<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, skinBin<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/models_part.PartSkin.html" class="tsd-signature-type" data-tsd-kind="Enumeration">PartSkin</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L397">axie-gene.ts:397</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L541">axie-gene.ts:541</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -782,9 +908,9 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>region: <a href="../enums/models_region.Region.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Region</a></h5>
+									<h5>regionBin: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>region of the Axie.</p>
+										<p>region binary of the Axie.</p>
 									</div>
 								</li>
 								<li>
@@ -809,7 +935,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L254">axie-gene.ts:254</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L330">axie-gene.ts:330</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -832,7 +958,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L215">axie-gene.ts:215</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L280">axie-gene.ts:280</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -855,7 +981,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L228">axie-gene.ts:228</a></li>
+									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/403f7f8/src/axie-gene.ts#L304">axie-gene.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -865,43 +991,6 @@
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/models_tag.Tag.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Tag</a></h4>
 							<p>Tag tag of the Axie.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="parseHex" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Hex</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Hex<span class="tsd-signature-symbol">(</span>hex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/models_internal_gene_bin_group.GeneBinGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">GeneBinGroup</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ShaneMaglangit/agp-ts/blob/dc172f9/src/axie-gene.ts#L146">axie-gene.ts:146</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Converts the hex representation of an Axie&#39;s gene into binary and divides them into
-									their respective groups</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>static</dt>
-									<dd></dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>hex: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>hex representation of an Axie&#39;s gene.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/models_internal_gene_bin_group.GeneBinGroup.html" class="tsd-signature-type" data-tsd-kind="Interface">GeneBinGroup</a></h4>
-							<p>GeneBinGroup a collective object that contains the grouped binary representation of the Axie&#39;s gene.</p>
 						</li>
 					</ul>
 				</section>
@@ -947,6 +1036,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/axie_gene.HexType.html" class="tsd-kind-icon">Hex<wbr>Type</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
@@ -957,6 +1049,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="axie_gene.AxieGene.html#_genes" class="tsd-kind-icon">_genes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="axie_gene.AxieGene.html#_hexType" class="tsd-kind-icon">_hex<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="axie_gene.AxieGene.html#geneBinGroup" class="tsd-kind-icon">gene<wbr>Bin<wbr>Group</a>
@@ -1000,6 +1095,12 @@
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="axie_gene.AxieGene.html#tail" class="tsd-kind-icon">tail</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="axie_gene.AxieGene.html#getGeneQuality" class="tsd-kind-icon">get<wbr>Gene<wbr>Quality</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="axie_gene.AxieGene.html#getPartQuality" class="tsd-kind-icon">get<wbr>Part<wbr>Quality</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="axie_gene.AxieGene.html#parseBodySkin" class="tsd-kind-icon">parse<wbr>Body<wbr>Skin</a>
 							</li>
@@ -1011,6 +1112,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="axie_gene.AxieGene.html#parseGenes" class="tsd-kind-icon">parse<wbr>Genes</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="axie_gene.AxieGene.html#parseHex" class="tsd-kind-icon">parse<wbr>Hex</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="axie_gene.AxieGene.html#parsePart" class="tsd-kind-icon">parse<wbr>Part</a>
@@ -1036,9 +1140,6 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="axie_gene.AxieGene.html#parseTag" class="tsd-kind-icon">parse<wbr>Tag</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="axie_gene.AxieGene.html#parseHex" class="tsd-kind-icon">parse<wbr>Hex</a>
-							</li>
 						</ul>
 					</li>
 				</ul>
@@ -1055,6 +1156,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>

@@ -32,14 +32,14 @@ Let us create an AxieGene object from the hex string that we have.
 256 Bit Genes
 
 ```javascript
-const { AxieGene } = require("agp-npm/dist/src/axie-gene"); // Defaults to HexType.Bit256
+const { AxieGene } = require("agp-npm/dist/axie-gene"); // Defaults to HexType.Bit256
 const axieGene = new AxieGene("0x11c642400a028ca14a428c20cc011080c61180a0820180604233082");
 ```
 
 512 Bit Genes
 
 ```javascript
-const { AxieGene } = require("agp-npm/dist/src/axie-gene");
+const { AxieGene } = require("agp-npm/dist/axie-gene");
 const hex = "0x280000000000010040412090830C0000000101942040440A00010190284082040001018C2061000A000101801021400400010180204080060001018418404008"
 const axieGene = new AxieGene(hex, HexType.Bit512);
 ```
