@@ -516,7 +516,8 @@ export class AxieGene {
     const partId = `${partType}-${partName.toLowerCase()}`
       .split(' ')
       .join('-')
-      .replace("'", '');
+      .replace("'", '')
+      .replace('.', '');
     // @ts-ignore
     const partJson = partsJson[partId];
     if (partJson === undefined) {
