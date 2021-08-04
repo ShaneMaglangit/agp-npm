@@ -407,7 +407,7 @@ export class AxieGene {
     const dClass = this.parsePartClass(
       this._hexType === HexType.Bit256
         ? partBin.slice(2, 6)
-        : partBin.slice(5, 9)
+        : partBin.slice(5, 9),
     );
     const dBin =
       this._hexType === HexType.Bit256
@@ -420,7 +420,7 @@ export class AxieGene {
     const r1Class = this.parsePartClass(
       this._hexType === HexType.Bit256
         ? partBin.slice(12, 16)
-        : partBin.slice(18, 22)
+        : partBin.slice(18, 22),
     );
     const r1Bin =
       this._hexType === HexType.Bit256
@@ -431,7 +431,7 @@ export class AxieGene {
       partType,
       regionBin,
       r1Bin,
-      rSkin
+      rSkin,
     );
     const r1 = this.parsePartGene(partType, r1Name);
 
@@ -439,7 +439,7 @@ export class AxieGene {
     const r2Class = this.parsePartClass(
       this._hexType === HexType.Bit256
         ? partBin.slice(22, 26)
-        : partBin.slice(31, 35)
+        : partBin.slice(31, 35),
     );
     const r2Bin =
       this._hexType === HexType.Bit256
@@ -450,7 +450,7 @@ export class AxieGene {
       partType,
       regionBin,
       r2Bin,
-      rSkin
+      rSkin,
     );
     const r2 = this.parsePartGene(partType, r2Name);
 
@@ -488,7 +488,7 @@ export class AxieGene {
     partType: PartType,
     regionBin: string,
     partBin: string,
-    skin: PartSkin
+    skin: PartSkin,
   ): string {
     // @ts-ignore
     const part = traitsJson[cls][partType][partBin];
@@ -516,7 +516,8 @@ export class AxieGene {
     const partId = `${partType}-${partName.toLowerCase()}`
       .split(' ')
       .join('-')
-      .replace("'", '');
+      .replace('\'', '')
+      .replace('.', '-');
     // @ts-ignore
     const partJson = partsJson[partId];
     if (partJson === undefined) {
