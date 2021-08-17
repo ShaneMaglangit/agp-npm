@@ -316,9 +316,7 @@ export class AxieGene {
    */
   private parseBodySkin(): BodySkin {
     const ret = binBodySkin.get(this.geneBinGroup.bodySkin);
-    if (ret === undefined) {
-      throw new Error('cannot recognize body skin');
-    }
+    if (ret === undefined) throw new Error('cannot recognize body skin');
     return ret;
   }
 
@@ -492,9 +490,7 @@ export class AxieGene {
   ): string {
     // @ts-ignore
     const part = traitsJson[cls][partType][partBin];
-    if (part === undefined) {
-      throw new Error('cannot recognize part binary');
-    }
+    if (part === undefined) throw new Error('cannot recognize part binary');
     let ret = part[skin];
     if (ret === undefined) {
       const fallBack = part[PartSkin.Global];

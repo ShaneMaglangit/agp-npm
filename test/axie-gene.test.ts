@@ -313,3 +313,10 @@ describe('AxieGene_Quality', () => {
     expect(axieGeneP2.getGeneQuality()).toBe(35.33);
   });
 })
+
+describe("AxieGene_Kotaro", () => {
+  const axieKotaro256 = new AxieGene('0x10000000040b122204a12948044520c40465300808a1284214c1088204610846')
+  it('eyes kotaro 256', () => {
+    expect(axieKotaro256.eyes.d.partId).toBe("eyes-kotaro?")
+  })
+})

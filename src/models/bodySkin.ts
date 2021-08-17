@@ -6,5 +6,5 @@ export enum BodySkin {
 
 export const binBodySkin = new Map([
   ['0000', BodySkin.Normal],
-  ['0001', BodySkin.Frosty],
+  ['0001', BodySkin.Frosty]
 ]);

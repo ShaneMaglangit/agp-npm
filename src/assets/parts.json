@@ -755,10 +755,10 @@
         "specialGenes": "japan",
         "type": "eyes"
     },
-    "eyes-kotaro": {
+    "eyes-kotaro?": {
         "class": "bug",
         "name": "Kotaro?",
-        "partId": "eyes-kotaro",
+        "partId": "eyes-kotaro?",
         "specialGenes": "",
         "type": "eyes"
     },

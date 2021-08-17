@@ -32,7 +32,7 @@ export const binClassMap = new Map([
   ['00011', Cls.Plant],
   ['00100', Cls.Aquatic],
   ['00101', Cls.Reptile],
-  ['10000', Cls.Dawn],
-  ['10001', Cls.Mech],
+  ['10000', Cls.Mech],
+  ['10001', Cls.Dawn],
   ['10010', Cls.Dusk],
 ]);
