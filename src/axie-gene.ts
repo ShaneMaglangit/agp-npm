@@ -1,5 +1,11 @@
 import { GeneBinGroup } from './models/internal/gene-bin-group';
-import { binPartSkinMap, Part, PartGene, PartSkin, PartType } from './models/part';
+import {
+  binPartSkinMap,
+  Part,
+  PartGene,
+  PartSkin,
+  PartType,
+} from './models/part';
 import { classColorMap, ColorGene } from './models/color';
 import { binBodySkin, BodySkin } from './models/bodySkin';
 import { binClassMap, Cls } from './models/cls';
@@ -298,14 +304,34 @@ export class AxieGene {
   private parseTag(): Tag {
     if (this.geneBinGroup.tag === '000000000000000') {
       const bionicParts: PartSkin[] = [
-        this.parsePartSkin(this.geneBinGroup.region, this.geneBinGroup.eyes.slice(0, 4)),
-        this.parsePartSkin(this.geneBinGroup.region, this.geneBinGroup.ears.slice(0, 4)),
-        this.parsePartSkin(this.geneBinGroup.region, this.geneBinGroup.horn.slice(0, 4)),
-        this.parsePartSkin(this.geneBinGroup.region, this.geneBinGroup.mouth.slice(0, 4)),
-        this.parsePartSkin(this.geneBinGroup.region, this.geneBinGroup.back.slice(0, 4)),
-        this.parsePartSkin(this.geneBinGroup.region, this.geneBinGroup.tail.slice(0, 4)),
+        this.parsePartSkin(
+          this.geneBinGroup.region,
+          this.geneBinGroup.eyes.slice(0, 4)
+        ),
+        this.parsePartSkin(
+          this.geneBinGroup.region,
+          this.geneBinGroup.ears.slice(0, 4)
+        ),
+        this.parsePartSkin(
+          this.geneBinGroup.region,
+          this.geneBinGroup.horn.slice(0, 4)
+        ),
+        this.parsePartSkin(
+          this.geneBinGroup.region,
+          this.geneBinGroup.mouth.slice(0, 4)
+        ),
+        this.parsePartSkin(
+          this.geneBinGroup.region,
+          this.geneBinGroup.back.slice(0, 4)
+        ),
+        this.parsePartSkin(
+          this.geneBinGroup.region,
+          this.geneBinGroup.tail.slice(0, 4)
+        ),
       ];
-      return bionicParts.includes(PartSkin.Bionic) ? Tag.Agamogenesis : Tag.Default;
+      return bionicParts.includes(PartSkin.Bionic)
+        ? Tag.Agamogenesis
+        : Tag.Default;
     }
     const ret = binTagMap.get(this.geneBinGroup.tag);
     if (ret === undefined) {
@@ -389,7 +415,7 @@ export class AxieGene {
     const dClass = this.parsePartClass(
       this._hexType === HexType.Bit256
         ? partBin.slice(2, 6)
-        : partBin.slice(4, 9),
+        : partBin.slice(4, 9)
     );
     const dBin =
       this._hexType === HexType.Bit256
@@ -402,7 +428,7 @@ export class AxieGene {
     const r1Class = this.parsePartClass(
       this._hexType === HexType.Bit256
         ? partBin.slice(12, 16)
-        : partBin.slice(17, 22),
+        : partBin.slice(17, 22)
     );
     const r1Bin =
       this._hexType === HexType.Bit256
@@ -413,7 +439,7 @@ export class AxieGene {
       partType,
       regionBin,
       r1Bin,
-      rSkin,
+      rSkin
     );
     const r1 = this.parsePartGene(partType, r1Name);
 
@@ -421,7 +447,7 @@ export class AxieGene {
     const r2Class = this.parsePartClass(
       this._hexType === HexType.Bit256
         ? partBin.slice(22, 26)
-        : partBin.slice(30, 35),
+        : partBin.slice(30, 35)
     );
     const r2Bin =
       this._hexType === HexType.Bit256
@@ -432,7 +458,7 @@ export class AxieGene {
       partType,
       regionBin,
       r2Bin,
-      rSkin,
+      rSkin
     );
     const r2 = this.parsePartGene(partType, r2Name);
 
@@ -470,7 +496,7 @@ export class AxieGene {
     partType: PartType,
     regionBin: string,
     partBin: string,
-    skin: PartSkin,
+    skin: PartSkin
   ): string {
     // @ts-ignore
     const part = traitsJson[cls][partType][partBin];
@@ -496,7 +522,7 @@ export class AxieGene {
     const partId = `${partType}-${partName.toLowerCase()}`
       .split(' ')
       .join('-')
-      .replace('\'', '')
+      .replace("'", '')
       .replace('.', '');
     // @ts-ignore
     const partJson = partsJson[partId];

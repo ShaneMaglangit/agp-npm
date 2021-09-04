@@ -4,7 +4,7 @@ export enum Tag {
   Origin = 'origin',
   Meo1 = 'meo1',
   Meo2 = 'meo2',
-  Agamogenesis = 'agamogenesis'
+  Agamogenesis = 'agamogenesis',
 }
 
 export const binTagMap = new Map([
