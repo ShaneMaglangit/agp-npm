@@ -34,6 +34,7 @@ export enum PartSkin {
   Japan = 'japan',
   Xmas1 = 'xmas1',
   Xmas2 = 'xmas2',
+  Bionic = 'bionic'
 }
 
 export const binPartSkinMap = new Map([
@@ -41,6 +42,7 @@ export const binPartSkinMap = new Map([
   ['00000', PartSkin.Global],
   ['00001', PartSkin.Japan],
   ['010101010101', PartSkin.Xmas1],
+  ['01', PartSkin.Bionic],
   ['10', PartSkin.Xmas2],
   ['11', PartSkin.Mystic],
   // 512 PartSkins
@@ -49,4 +51,5 @@ export const binPartSkinMap = new Map([
   ['0011', PartSkin.Japan],
   ['0100', PartSkin.Xmas1],
   ['0101', PartSkin.Xmas2],
+  ['0010', PartSkin.Bionic]
 ]);
