@@ -320,3 +320,17 @@ describe("AxieGene_Kotaro", () => {
     expect(axieKotaro256.eyes.d.partId).toBe("eyes-kotaro?")
   })
 })
+
+describe("AxieGene_Agamogenesis", () => {
+  const axieKotaro256 = new AxieGene('0x400880000e38e666108421081084210808c2308c50c4310c0481204808a2288a')
+  it('horn 5H04L-5T4R 256', () => {
+    expect(axieKotaro256.horn.d.partId).toBe("horn-5h04l-5t4r")
+  })
+})
+
+describe("AxieGene_Agamogenesis_512", () => {
+  const axieKotaro256 = new AxieGene('0x200000000000010003c1e0f18618000000010010208104080001001020810408000101883041820c000001103081840c0001000420210108000101882841420a', HexType.Bit512)
+  it('horn 5H04L-5T4R 512', () => {
+    expect(axieKotaro256.horn.d.partId).toBe("horn-5h04l-5t4r")
+  })
+})

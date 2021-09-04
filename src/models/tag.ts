@@ -4,12 +4,14 @@ export enum Tag {
   Origin = 'origin',
   Meo1 = 'meo1',
   Meo2 = 'meo2',
+  Agamogenesis = 'agamogenesis',
 }
 
 export const binTagMap = new Map([
   // 256 Tags
   ['00000', Tag.Default],
   ['00001', Tag.Origin],
+  ['00010', Tag.Agamogenesis],
   ['00011', Tag.Meo1],
   ['00100', Tag.Meo2],
   // 512 Tags
