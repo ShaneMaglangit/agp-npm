@@ -35,6 +35,12 @@ export enum PartSkin {
   Xmas1 = 'xmas1',
   Xmas2 = 'xmas2',
   Bionic = 'bionic',
+  Summer = 'summer',
+  StrawberrySummer = 'strawberrySummer',
+  VanillaSummer = 'vanillaSummer',
+  Shiny = 'shiny',
+  StrawberryShiny = 'strawberryShiny',
+  VanillaShiny = 'vanillaShiny',
 }
 
 export const binPartSkinMap = new Map([
@@ -52,4 +58,10 @@ export const binPartSkinMap = new Map([
   ['0100', PartSkin.Xmas1],
   ['0101', PartSkin.Xmas2],
   ['0010', PartSkin.Bionic],
+  ['0110', PartSkin.Summer],
+  ['0111', PartSkin.StrawberrySummer],
+  ['1000', PartSkin.VanillaSummer],
+  ['1001', PartSkin.Shiny],
+  ['1010', PartSkin.StrawberryShiny],
+  ['1011', PartSkin.VanillaShiny],
 ]);
