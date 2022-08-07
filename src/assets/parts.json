@@ -1783,5 +1783,131 @@
     "partId": "tail-yam",
     "specialGenes": "",
     "type": "tail"
+  },
+  "back-beach-ball": {
+    "partId": "back-beach-ball",
+    "class": "beast",
+    "name": "Beach Ball",
+    "specialGenes": "summer-2022",
+    "type": "back"
+  },
+  "back-beach-ball-shiny": {
+    "partId": "back-beach-ball-shiny",
+    "class": "beast",
+    "name": "Beach Ball✨",
+    "specialGenes": "summer-2022",
+    "type": "back"
+  },
+  "back-turtle-buoy": {
+    "partId": "back-turtle-buoy",
+    "class": "reptile",
+    "name": "Turtle Buoy",
+    "specialGenes": "summer-2022",
+    "type": "back"
+  },
+  "back-turtle-buoy-shiny": {
+    "partId": "back-turtle-buoy-shiny",
+    "class": "reptile",
+    "name": "Turtle Buoy✨",
+    "specialGenes": "summer-2022",
+    "type": "back"
+  },
+  "ears-coca": {
+    "partId": "ears-coca",
+    "class": "beast",
+    "name": "Coca",
+    "specialGenes": "summer-2022",
+    "type": "ears"
+  },
+  "ears-coca-shiny": {
+    "partId": "ears-coca-shiny",
+    "class": "beast",
+    "name": "Coca✨",
+    "specialGenes": "summer-2022",
+    "type": "ears"
+  },
+  "eyes-flower-sunglasses": {
+    "partId": "eyes-flower-sunglasses",
+    "class": "bug",
+    "name": "Flower Sunglasses",
+    "specialGenes": "summer-2022",
+    "type": "eyes"
+  },
+  "eyes-flower-sunglasses-shiny": {
+    "partId": "eyes-flower-sunglasses-shiny",
+    "class": "bug",
+    "name": "Flower Sunglasses✨",
+    "specialGenes": "summer-2022",
+    "type": "eyes"
+  },
+  "horn-strawberry-ice-cream": {
+    "partId": "horn-strawberry-ice-cream",
+    "class": "reptile",
+    "name": "Strawberry Ice Cream",
+    "specialGenes": "summer-2022",
+    "type": "horn"
+  },
+  "horn-strawberry-ice-cream-shiny": {
+    "partId": "horn-strawberry-ice-cream-shiny",
+    "class": "reptile",
+    "name": "Strawberry Ice Cream✨",
+    "specialGenes": "summer-2022",
+    "type": "horn"
+  },
+  "horn-watermelon-ice-cream": {
+    "partId": "horn-watermelon-ice-cream",
+    "class": "reptile",
+    "name": "Watermelon Ice Cream",
+    "specialGenes": "summer-2022",
+    "type": "horn"
+  },
+  "horn-vanilla-ice-cream": {
+    "partId": "horn-vanilla-ice-cream",
+    "class": "reptile",
+    "name": "Vanilla Ice Cream",
+    "specialGenes": "summer-2022",
+    "type": "horn"
+  },
+  "horn-vanilla-ice-cream-shiny": {
+    "partId": "horn-vanilla-ice-cream-shiny",
+    "class": "reptile",
+    "name": "Vanilla Ice Cream✨",
+    "specialGenes": "summer-2022",
+    "type": "horn"
+  },
+  "horn-watermelon-ice-cream-shiny": {
+    "partId": "horn-watermelon-ice-cream-shiny",
+    "class": "reptile",
+    "name": "Watermelon Ice Cream✨",
+    "specialGenes": "summer-2022",
+    "type": "horn"
+  },
+  "mouth-bubble-fish": {
+    "partId": "mouth-bubble-fish",
+    "class": "aquatic",
+    "name": "Bubble Fish",
+    "specialGenes": "summer-2022",
+    "type": "mouth"
+  },
+  "mouth-bubble-fish-shiny": {
+    "partId": "mouth-bubble-fish-shiny",
+    "class": "aquatic",
+    "name": "Bubble Fish✨",
+    "specialGenes": "summer-2022",
+    "type": "mouth"
+  },
+  "tail-cotton-candy": {
+    "partId": "tail-cotton-candy",
+    "class": "beast",
+    "name": "Cotton Candy",
+    "specialGenes": "summer-2022",
+    "type": "tail"
+  },
+  "tail-cotton-candy-shiny": {
+    "partId": "tail-cotton-candy-shiny",
+    "class": "beast",
+    "name": "Cotton Candy✨",
+    "specialGenes": "summer-2022",
+    "type": "tail"
   }
 }
