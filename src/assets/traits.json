@@ -25,7 +25,9 @@
       },
       "000010": {
         "global": "Nyan",
-        "mystic": "Pointy Nyan"
+        "mystic": "Pointy Nyan",
+        "summer": "Coca",
+        "shiny": "Coca Shiny"
       },
       "000110": {
         "global": "Innocent Lamb",
@@ -57,7 +59,9 @@
         "global": "Timber"
       },
       "001100": {
-        "global": "Furball"
+        "global": "Furball",
+        "summer": "Beach Ball",
+        "shiny": "Beach Ball Shiny"
       }
     },
     "horn": {
@@ -89,7 +93,9 @@
       },
       "000010": {
         "global": "Cottontail",
-        "mystic": "Sakura Cottontail"
+        "mystic": "Sakura Cottontail",
+        "summer": "Cotton Candy",
+        "shiny": "Cotton Candy Shiny"
       },
       "000110": {
         "global": "Shiba"
@@ -231,7 +237,9 @@
         "mystic": "Broken Bookworm"
       },
       "000100": {
-        "global": "Neo"
+        "global": "Neo",
+        "summer": "Flower Sunglasses",
+        "shiny": "Flower Sunglasses Shiny"
       },
       "001010": {
         "global": "Kotaro?"
@@ -260,7 +268,9 @@
     },
     "mouth": {
       "001000": {
-        "global": "Risky Fish"
+        "global": "Risky Fish",
+        "summer": "Bubble Fish",
+        "shiny": "Bubble Fish Shiny"
       },
       "000100": {
         "global": "Catfish"
@@ -552,7 +562,9 @@
         "global": "Green Thorns"
       },
       "001010": {
-        "global": "Red Ear"
+        "global": "Red Ear",
+        "summer": "Turtle Buoy",
+        "shiny": "Turtle Buoy Shiny"
       },
       "001100": {
         "global": "Croc"
@@ -583,7 +595,13 @@
     "horn": {
       "000010": {
         "global": "Unko",
-        "mystic": "Pinku Unko"
+        "mystic": "Pinku Unko",
+        "summer": "Watermelon Ice Cream",
+        "shiny": "Watermelon Ice Cream Shiny",
+        "strawberrySummer": "Strawberry Ice Cream",
+        "strawberryShiny": "Strawberry Ice Cream Shiny",
+        "vanillaSummer": "Vanilla Ice Cream",
+        "VanillaShiny": "Vanilla Ice Cream Shiny"
       },
       "000110": {
         "global": "Cerastes"

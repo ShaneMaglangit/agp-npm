@@ -244,6 +244,122 @@ describe('AxieGene_Japan_512bit', () => {
     expect(axieGene.tail).toStrictEqual(want);
   });
 });
+describe('AxieGene_Summer_WavyBody_512bit', () => {
+  const axieGene = new AxieGene('0x800000000000000102c100b0810800000000030410804008000003102000400a000003000820c104000003140861800c00000300306180080000030008410202', HexType.Bit512);
+  it('parse class', () => {
+    expect(axieGene.cls).toBe(Cls.Mech);
+  });
+  it('parse region', () => {
+    expect(axieGene.region).toBe(Region.Global);
+  });
+  it('parse tag', () => {
+    expect(axieGene.tag).toBe(Tag.Default);
+  });
+  it('parse body skin', () => {
+    expect(axieGene.bodySkin).toBe(BodySkin.Wavy);
+  });
+  it('parse pattern', () => {
+    expect(axieGene.pattern).toStrictEqual({ d: '000001011', r1: '000001000', r2: '000001011' });
+  });
+  it('parse color', () => {
+    expect(axieGene.color).toStrictEqual({ d: 'D9D9D9', r1: '000001', r2: 'D9D9D9' });
+  });
+  it('parse eyes', () => {
+    const want = {
+      d: {
+        partId: 'eyes-flower-sunglasses',
+        cls: Cls.Bug,
+        specialGenes: 'summer-2022',
+        type: PartType.Eyes,
+        name: 'Flower Sunglasses',
+      },
+      r1: { partId: 'eyes-sleepless', cls: Cls.Aquatic, specialGenes: '', type: PartType.Eyes, name: 'Sleepless' },
+      r2: { partId: 'eyes-puppy', cls: Cls.Beast, specialGenes: '', type: PartType.Eyes, name: 'Puppy' },
+      mystic: false,
+    };
+    expect(axieGene.eyes).toStrictEqual(want);
+  });
+  it('parse mouth', () => {
+    const want = {
+      d: { partId: 'mouth-bubble-fish', cls: Cls.Aquatic, specialGenes: 'summer-2022', type: PartType.Mouth, name: 'Bubble Fish' },
+      r1: { partId: 'mouth-nut-cracker', cls: Cls.Beast, specialGenes: '', type: PartType.Mouth, name: 'Nut Cracker' },
+      r2: { partId: 'mouth-confident', cls: Cls.Beast, specialGenes: '', type: PartType.Mouth, name: 'Confident' },
+      mystic: false,
+    };
+    expect(axieGene.mouth).toStrictEqual(want);
+  });
+  it('parse ears', () => {
+    const want = {
+      d: { partId: 'ears-coca', cls: Cls.Beast, specialGenes: 'summer-2022', type: PartType.Ears, name: 'Coca' },
+      r1: { partId: 'ears-ear-breathing', cls: Cls.Bug, specialGenes: '', type: PartType.Ears, name: 'Ear Breathing' },
+      r2: { partId: 'ears-beetle-spike', cls: Cls.Bug, specialGenes: '', type: PartType.Ears, name: 'Beetle Spike' },
+      mystic: false,
+    };
+    expect(axieGene.ears).toStrictEqual(want);
+  });
+  it('parse horn', () => {
+    const want = {
+      d: { partId: 'horn-watermelon-ice-cream', cls: Cls.Reptile, specialGenes: 'summer-2022', type: PartType.Horn, name: 'Watermelon Ice Cream' },
+      r1: { partId: 'horn-watermelon', cls: Cls.Plant, specialGenes: '', type: PartType.Horn, name: 'Watermelon' },
+      r2: { partId: 'horn-arco', cls: Cls.Beast, specialGenes: '', type: PartType.Horn, name: 'Arco' },
+      mystic: false,
+    };
+    expect(axieGene.horn).toStrictEqual(want);
+  });
+  it('parse back', () => {
+    const want = {
+      d: { partId: 'back-beach-ball', cls: Cls.Beast, specialGenes: 'summer-2022', type: PartType.Back, name: 'Beach Ball' },
+      r1: { partId: 'back-pumpkin', cls: Cls.Plant, specialGenes: '', type: PartType.Back, name: 'Pumpkin' },
+      r2: { partId: 'back-risky-beast', cls: Cls.Beast, specialGenes: '', type: PartType.Back, name: 'Risky Beast' },
+      mystic: false,
+    };
+    expect(axieGene.back).toStrictEqual(want);
+  });
+  it('parse tail', () => {
+    const want = {
+      d: { partId: 'tail-cotton-candy', cls: Cls.Beast, specialGenes: 'summer-2022', type: PartType.Tail, name: 'Cotton Candy' },
+      r1: { partId: 'tail-cloud', cls: Cls.Bird, specialGenes: '', type: PartType.Tail, name: 'Cloud' },
+      r2: { partId: 'tail-swallow', cls: Cls.Bird, specialGenes: '', type: PartType.Tail, name: 'Swallow' },
+      mystic: false,
+    };
+    expect(axieGene.tail).toStrictEqual(want);
+  });
+});
+
+describe('AxieGene_SummerShiny_and_Vanilla_512bit', () => {
+  const axieGene = new AxieGene('0x1800000000000100020180b102080000000100141040840a0000031020814004000100081881440a0000041408a0400a0000049428a143060001001408014308', HexType.Bit512);
+  it('parse horn', () => {
+    const want = {
+      d: { partId: 'horn-vanilla-ice-cream', cls: Cls.Reptile, specialGenes: 'summer-2022', type: PartType.Horn, name: 'Vanilla Ice Cream' },
+      r1: { partId: 'horn-vanilla-ice-cream', cls: Cls.Reptile, specialGenes: 'summer-2022', type: PartType.Horn, name: 'Vanilla Ice Cream' },
+      r2: { partId: 'horn-dual-blade', cls: Cls.Beast, specialGenes: '', type: PartType.Horn, name: 'Dual Blade' },
+      mystic: false,
+    };
+    expect(axieGene.horn).toStrictEqual(want);
+  });
+  it('parse back', () => {
+    const want = {
+      d: { partId: 'back-turtle-buoy-shiny', cls: Cls.Reptile, specialGenes: 'summer-2022', type: PartType.Back, name: 'Turtle Buoy✨' },
+      r1: { partId: 'back-turtle-buoy-shiny', cls: Cls.Reptile, specialGenes: 'summer-2022', type: PartType.Back, name: 'Turtle Buoy✨' },
+      r2: { partId: 'back-bidens', cls: Cls.Plant, specialGenes: '', type: PartType.Back, name: 'Bidens' },
+      mystic: false,
+    };
+    expect(axieGene.back).toStrictEqual(want);
+  });
+})
+
+describe('AxieGene_StrawberryShiny_512bit', () => {
+  const axieGene = new AxieGene('0x10000816021041000000001000028a1420a0001000810008302000100001800420c000005140800840c00010000104080020001000020814504', HexType.Bit512);
+  it('parse horn', () => {
+    const want = {
+      d: { partId: 'horn-strawberry-ice-cream-shiny', cls: Cls.Reptile, specialGenes: 'summer-2022', type: PartType.Horn, name: 'Strawberry Ice Cream✨' },
+      r1: { partId: 'horn-imp', cls: Cls.Beast, specialGenes: '', type: PartType.Horn, name: 'Imp' },
+      r2: { partId: 'horn-shoal-star', cls: Cls.Aquatic, specialGenes: '', type: PartType.Horn, name: 'Shoal Star' },
+      mystic: false,
+    };
+    expect(axieGene.horn).toStrictEqual(want);
+  });
+})
 
 describe('AxieGene_Mystic', () => {
   const axieGene = new AxieGene('0x3000400009204433cc231002c4210902c0210882146408860c621944cc221902');
