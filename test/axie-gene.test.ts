@@ -244,6 +244,90 @@ describe('AxieGene_Japan_512bit', () => {
     expect(axieGene.tail).toStrictEqual(want);
   });
 });
+
+// Summer parts and body don't exist in 256bit genes
+describe('AxieGene_Summer_WavyBody_256bit', () => {
+  const axieGene = new AxieGene('0x800000000a1ca212044408081080080a002118441423300c00c3300800222082');
+  it('parse class', () => {
+    expect(axieGene.cls).toBe(Cls.Mech);
+  });
+  it('parse region', () => {
+    expect(axieGene.region).toBe(Region.Global);
+  });
+  it('parse tag', () => {
+    expect(axieGene.tag).toBe(Tag.Default);
+  });
+  it('parse body skin', () => {
+    expect(axieGene.bodySkin).toBe(BodySkin.Normal);
+  });
+  it('parse pattern', () => {
+    expect(axieGene.pattern).toStrictEqual({ d: '001010', r1: '000111', r2: '001010' });
+  });
+  it('parse color', () => {
+    expect(axieGene.color).toStrictEqual({ d: 'D9D9D9', r1: '0001', r2: 'D9D9D9' });
+  });
+  it('parse eyes', () => {
+    const want = {
+      d: {
+        partId: 'eyes-neo',
+        cls: Cls.Bug,
+        specialGenes: '',
+        type: PartType.Eyes,
+        name: 'Neo',
+      },
+      r1: { partId: 'eyes-sleepless', cls: Cls.Aquatic, specialGenes: '', type: PartType.Eyes, name: 'Sleepless' },
+      r2: { partId: 'eyes-puppy', cls: Cls.Beast, specialGenes: '', type: PartType.Eyes, name: 'Puppy' },
+      mystic: false,
+    };
+    expect(axieGene.eyes).toStrictEqual(want);
+  });
+  it('parse mouth', () => {
+    const want = {
+      d: { partId: 'mouth-risky-fish', cls: Cls.Aquatic, specialGenes: '', type: PartType.Mouth, name: 'Risky Fish' },
+      r1: { partId: 'mouth-nut-cracker', cls: Cls.Beast, specialGenes: '', type: PartType.Mouth, name: 'Nut Cracker' },
+      r2: { partId: 'mouth-confident', cls: Cls.Beast, specialGenes: '', type: PartType.Mouth, name: 'Confident' },
+      mystic: false,
+    };
+    expect(axieGene.mouth).toStrictEqual(want);
+  });
+  it('parse ears', () => {
+    const want = {
+      d: { partId: 'ears-nyan', cls: Cls.Beast, specialGenes: '', type: PartType.Ears, name: 'Nyan' },
+      r1: { partId: 'ears-ear-breathing', cls: Cls.Bug, specialGenes: '', type: PartType.Ears, name: 'Ear Breathing' },
+      r2: { partId: 'ears-beetle-spike', cls: Cls.Bug, specialGenes: '', type: PartType.Ears, name: 'Beetle Spike' },
+      mystic: false,
+    };
+    expect(axieGene.ears).toStrictEqual(want);
+  });
+  it('parse horn', () => {
+    const want = {
+      d: { partId: 'horn-unko', cls: Cls.Reptile, specialGenes: '', type: PartType.Horn, name: 'Unko' },
+      r1: { partId: 'horn-watermelon', cls: Cls.Plant, specialGenes: '', type: PartType.Horn, name: 'Watermelon' },
+      r2: { partId: 'horn-arco', cls: Cls.Beast, specialGenes: '', type: PartType.Horn, name: 'Arco' },
+      mystic: false,
+    };
+    expect(axieGene.horn).toStrictEqual(want);
+  });
+  it('parse back', () => {
+    const want = {
+      d: { partId: 'back-furball', cls: Cls.Beast, specialGenes: '', type: PartType.Back, name: 'Furball' },
+      r1: { partId: 'back-pumpkin', cls: Cls.Plant, specialGenes: '', type: PartType.Back, name: 'Pumpkin' },
+      r2: { partId: 'back-risky-beast', cls: Cls.Beast, specialGenes: '', type: PartType.Back, name: 'Risky Beast' },
+      mystic: false,
+    };
+    expect(axieGene.back).toStrictEqual(want);
+  });
+  it('parse tail', () => {
+    const want = {
+      d: { partId: 'tail-cottontail', cls: Cls.Beast, specialGenes: '', type: PartType.Tail, name: 'Cottontail' },
+      r1: { partId: 'tail-cloud', cls: Cls.Bird, specialGenes: '', type: PartType.Tail, name: 'Cloud' },
+      r2: { partId: 'tail-swallow', cls: Cls.Bird, specialGenes: '', type: PartType.Tail, name: 'Swallow' },
+      mystic: false,
+    };
+    expect(axieGene.tail).toStrictEqual(want);
+  });
+});
+
 describe('AxieGene_Summer_WavyBody_512bit', () => {
   const axieGene = new AxieGene('0x800000000000000102c100b0810800000000030410804008000003102000400a000003000820c104000003140861800c00000300306180080000030008410202', HexType.Bit512);
   it('parse class', () => {
